@@ -1,0 +1,488 @@
+\documentclass[a4paper,11pt]{book}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+
+\title{\includegraphics{o2.png}\\Requirements Bookkeeping application ALICE}
+\author{Dr. Marten Teitsma}
+
+
+\begin{document}
+
+
+\maketitle
+
+\begin{table}
+\begin{tabular}{p{6cm}p{6cm}}
+\hline
+Date  & Author\\
+\hline
+\hline
+20 Februari 2018   & Dr. Marten Teitsma\\
+\hline
+\end{tabular}
+\caption{Change log}
+\end{table}
+
+
+\tableofcontents
+\chapter{Introduction}
+This document is structured according to the IEEE standard 830-1998 Recommended Practice for Software Requirements Specifications.
+
+\section{Vision}
+ Provide unified bookkeeping experience for operations, run catalogue and management.
+ 
+\section{Purpose of the Software Requirements Specifications}
+
+\section{Scope of the Bookkeeping System}
+
+\section{Definitions, Acronyms, and Abbreviations}
+
+\subsection{Log Entry}
+A Log Entry is a text message that describe an intervention or an event that happened. It can be generated either by humans (e.g. a shifter enters his/her end-of-shift report) or by machines (e.g. a detector logs some abnormal situation automatically). 
+
+\subsection{Run}
+A Run is a unique ID that identifies a synchronous data processing session in the $O^2$ computing system with a specific and well-defined configuration. It normally ranges from a few minutes to tens of hours. It is generated and managed by the $O^2$ system. 
+
+\subsection{LHC Fill}
+An LHC Fill is a unique ID that identifies a period of activity in the LHC accelerator. It normally ranges from a few minutes to tens of hours. It is generated and managed by the LHC system and published via DIP protocol. 
+
+
+\section{References}
+
+\section{Overview}
+
+
+\chapter{Overall Description}
+\section{Introduction}
+
+\section{Target Groups}
+\subsection{Operational teams}
+\begin{itemize}
+  \item Run Coordination
+  \item Technical Coordination
+  \item Detector experts
+  \item O2 experts
+  \item Trigger
+\end{itemize}
+
+\subsection{Physics community}
+
+\subsection{ALICE management}
+
+\section{Needs}
+Access in a single place all metadata related with operational activities. Keep historical record of used configurations, statistics and data quality. Produce reports for operational teams and management. 
+
+\section{Product}
+Dashboards for run metadata with different levels of detail. Search for data sets that match given criteria. Forms for creating textual log entries. Notifications for interventions, main events and summary reports. API for read/write access to metadata repository. 
+
+
+\section{Business goals}
+Adapt to new O2 data model. Consolidate existing ALICE Electronic Logbook and Run Conditions Table in a single product. Refresh used technologies and make the product more future oriented. Integrate gathered experience and introduce missing features. 
+
+\section{Users of the system}
+Two types of users of the system can be discerned:
+\begin{itemize}
+  \item humans, or shifters which are people doing a shift in the control room of ALICE.
+  \item people who are on call for specific interventions
+  \item system administrators, people who administrate the log system
+  \item other systems, these are subsystems of the detector giving notice of specific events. The systems are:
+  \begin{itemize}
+    \item ACORDE
+    \item AD
+    \item BCM
+    \item BPTX
+    \item CPV
+    \item CTP
+    \item DAQ
+    \item DAQ\_TEST
+    \item Data Processing
+    \item Central DCS
+    \item DQM/QA
+    \item EMCal
+    \item FMD
+    \item Gas
+    \item General
+    \item HLT
+    \item HMPID
+    \item LHC Interface
+    \item Magnets
+    \item MUON\_TRG
+    \item MUON\_TRK
+    \item Offline
+    \item On Cal Interventions
+    \item P2 Info
+    \item PHOS
+    \item PMD
+    \item Run Coordination
+    \item Safety
+    \item SDD
+    \item SPD
+    \item SSD
+    \item TO
+    \item Technical Coordination
+    \item TOF
+    \item TPC
+    \item TPC Upgrade
+    \item TRD
+    \item Trigger
+    \item VO
+    \item ZDC
+  \end{itemize}
+\end{itemize}
+
+A user (shifter or system) makes an entry into the database consisting of several items. Each entry records the following items:
+\begin{itemize}
+  \item time of creation
+  \item which subsystem creates the entry
+  \item which class the creator originates:
+  \begin{itemize}
+    \item human
+    \item process
+  \end{itemize}
+  \item type of entry
+  \begin{itemize}
+    \item general
+    \item EOS
+    \item DCS
+  \end{itemize}
+  \item number of run
+  \item author of the entry (when the author is a human)
+  \item title of the entry
+  \item log entry
+  \item follow ups
+  \item files
+  \item actions
+\end{itemize}
+
+A person who is called for a specific intervention makes an entry into the log system consisting of the following items:
+\begin{itemize}
+  \item time of creation
+  \item author
+  \item type of intervention:
+  \begin{itemize}
+    \item remote
+    \item onsite
+  \end{itemize}
+  \item title of entry
+  \item log entry
+\end{itemize}
+
+System administrators can create an announcement. This announcement consists of the following items:
+\begin{itemize}
+  \item time of creation
+  \item validity, duration of interruption of the system
+  \item author
+  \item title of the entry
+  \item log entry
+\end{itemize}
+
+The table, in the database, which records several items concerning a run consists of the following items:
+\begin{itemize}
+  \item with\_beam	(shown in application)
+  \item run	time\_created	
+  \item time\_created\_HUMAN	
+  \item time\_completed	
+  \item time\_completed\_HUMAN	
+  \item DAQ\_time\_start	
+  \item DAQ\_time\_start\_HUMAN	
+  \item DAQ\_time\_end	
+  \item DAQ\_time\_end\_HUMAN	
+  \item TRGTimeStart	
+  \item TRGTimeStart\_HUMAN	
+  \item TRGTimeEnd	
+  \item TRGTimeEnd\_HUMAN	
+  \item duration (shown in application)
+  \item pauseDuration	
+  \item numberOfLDCs (shown in application)
+  \item numberOfGDCs (shown in application)
+  \item numberOfDetectors (shown in application)
+  \item partition (shown in application)
+  \item totalSubEvents	
+  \item averageSubEventsPerSecond	
+  \item totalEvents (shown in application)
+  \item totalEventsPhysics	
+  \item totalEventsCalibration	
+  \item totalEventsIncomplete	
+  \item averageEventsPerSecond	
+  \item totalDataReadout (shown in application)
+  \item averageDataRateReadout (shown in application)
+  \item totalDataEventBuilder	
+  \item averageDataRateEventBuilder	
+  \item totalDataRecorded	
+  \item averageDataRateRecorded	
+  \item run\_type (shown in application)
+  \item HLTmode (shown in application)
+  \item LHCperiod	
+  \item LDClocalRecording	
+  \item GDClocalRecording	
+  \item GDCmStreamRecording	
+  \item eventBuilding	
+  \item eor\_reason (shown in application)
+  \item ecs\_success	
+  \item daq\_success	
+  \item dataMigrated (shown in application)
+  \item L3\_magnetCurrent	
+  \item Dipole\_magnetCurrent	
+  \item runQualityOverview	
+  \item LHCFillNumber	
+  \item ctp\_act\_config	
+  \item numberOfPar	
+  \item numberOfFailedPar
+\end{itemize}
+Not found in table but shown in application: run number, 
+
+\section{User stories}
+\subsection{User}
+\begin{enumerate}
+  \item As a user, I want to have a smart editor to create my log entries (WYSIWYG or Markup) and be able to use smart text so that messages look nice (e.g. links, code, …) 
+  \item As a user, I want to attach files to log entries so that I can add additional non-textual information
+  \item As a user, I want to reply to existing log messages so that a conversation stays in a well-defined thread
+  \item As a user, I want to list log entries in a summary view so that I can get an overview of what happened in a given period.
+  \item As a user, I want to list log entries in a detailed view so that I can read them one after the other.
+  \item As a user, I want to search log entries by different criteria (e.g. title, content, author, creation date, …) and have the results listed. 
+  \item As a user, I want to browse through all the available metadata associated with a given run to understand on which conditions the run was made. 
+  \item As a user, I want to list all runs that match a given criteria to create my own run set. 
+  \item As a user, I want to see in a dashboard the metadata associated with an LHC Fill so that I can have a global image of what happened during that LHC Fill. 
+  \item As a user, I want to receive via email a global summary of each LHC Fill so that I can still follow ALICE operations without visiting the product. 
+  \item As a user, I want to be able to login with my CERN credentials to avoid having to remember a new set of credentials. 
+  \item As a user, I want to be able to customize dashboards so that I only see the fields relevant to me. 
+  \item As a user, I want to be able to save search criteria for later use so that I don’t lose time defining them at each visit. 
+  \item As an ALICE member, I would like to receive via email a global summary of each LHC Fill in order to follow ALICE operations without visiting the bookkeeping tools. Currently in the ALICE logbook I like that I receive via email a document with info on efficiency and EOR Reasons and that on the body of the email there is a summary for each fill (Vasco).
+  \item As ALICE collaborator I have to create statistics reports such as number of runs, quantity of data, number of events, summaries by trigger classes etc... These reports will use selection criterias I will specify such as time spans, active systems (e.g. only the runs including my particular system), run type etc...
+\item As ALICE collaborator I may have to open multiple GUIs with independent selection criterias (e.g. one browser window for day-to-day work and a second browser window for statistics) (Roberto Divia).
+\item As ALICE collaborator I need APIs to retrieve specific fields in the Logbook using selection criterias I provide. This access must be restricted, probably API by API or by fields being accessed, and protected against intentional or unintentional DoS attacks (Roberto Divia).
+\item As ALICE collaborator I need to be able to access the Logbook on a run-per-run summary view (possibly using a selection criteria I specify) and on a log entry by log entry view (possibly using a selection criteria I specify) (Roberto Divia).
+\item As ALICE collaborator I need to check the details of any run: EOR reason, statistics, log entries (Roberto Divia).
+
+  \item 
+\end{enumerate}
+
+\subsection{Shifter}
+Currently this shifter is looking at ECS/DAQ-, CTP- or HLT-subsystem. 
+\begin{enumerate}
+  \item As a shifter, I want to have templates that prefill most of my end-of-shift reports from the available metadata so that I don’t need to fill in myself what the system already knows (Vasco).
+  \item As a Shifter, I would like to have templates that automatically compile and format the data available in the system in order to write my end of shift report in a fast and uniform way. Currently in the ALICE logbook I don't like that I need to compile all the information myself and that not all shifters use the same structure (Vasco).
+  \item As a shifter I want to view log entries.
+  \item As a shifter I want to be able to create log entries.
+  \item As a shifter I want to view announcements.
+  \item As a shifter I want to be able to create announcements.
+  \item As a shifter I want to view on call interventions.
+  \item As a shifter I want to be able to create on call interventions.
+  \item As a shifter I want to be able to create gas log entries.
+  \item As a shifter I want to view some statistics of runs and other stuff.
+  \item As a shifter I want to view data about calibration of the detector.
+  \item As a shifter I want to be able to have a big screen view.
+  \item As a shifter I want to view data about the fill.
+  \item As shifter I would like to have templates that automatically compile  and format the data available in the system in order to write my end of shift report in a fast and uniform way. Currently in the ALICE logbook I don't like that I need to compile all the information myself and that not all shifters use the same structure (Roberto Divia).
+  \item As shifter I have to create log entries concerning any system (alone or in combination) (Roberto Divia).
+  \item As run co\"ordinator I may have to cross-reference log entries (e.g. by URL, by unique Reference ID, or by run number)  (Roberto Divia).
+  \item  As shifter I may need to attach files to log entries. These files may contain text or binary information (PNGs, JPGs etc...) (Roberto Divia).
+  \item As shifter I may need to cross reference log entries or other logbook fields (e.g. run numbers, fill numbers etc...) with whatever issue tracking system will be used by the ALICE collaboration (today: Jira). This association may also be done automatically by daemons (e.g. what is done today for EOR reasons and Jira tickets) (Roberto Divia).
+
+\end{enumerate}
+
+\subsection{Role Run Co\"ordinator}
+\begin{enumerate}
+  \item As run co\"ordinator, I want shifters to use templates so that it is easier and faster to read them (Vasco). 
+  \item As run co\"ordinator, I want to attach tags to runs so that I can then use them while searching (Vasco). 
+  \item As run co\"ordinator, I want to edit certain specialized fields associated to a run (e.g. EOR Reason) so that I correct wrong information inserted by the $O^2$ software (Vasco). 
+  \item As run coordinator, I want to specify acquisition targets for certain time periods and check how far we are in achieving them so that I can keep track of progress (Vasco). 
+  \item As run co\"ordinator I need to gather statistics on the runs selected by using custom rules (timestamps, run numbers, run types, included detectors etc...). These statistics will include EOR reasons, per-detector and per-system summaries, error recovery (PARs) rates etc... (Roberto Divia)
+  \item As run co\"ordinator I have to create Logbook entries that cover almost all the Systems (e.g. global announcements or minutes) (Roberto Divia).
+  \item As run co\"ordinator I have to create log entries concerning any system (alone or in combination) (Roberto Divia).
+  \item As run co\"ordinator I need to be able to update the logbook information for what concerns subsystems, in particular the run quality flag and the EOR reason(s). The question arises if subsystem run co\"ordianators can update information associated to other systems (e.g. EOR reasons) as it is the case today (Roberto Divia).
+  \item As run co\"ordinator I must be able to move collaborators to and out of subsystem teams. These action may be conflict the information stored in SAMS (Roberto Divia).
+  \item As run co\"ordinator I may request to receive automatic e-mails concerning all Logbook entries that include all systems (either without distinction or using special selection criterias). The e-mail delivery address will probably be an e-group (single e-mail address <...>@cern.ch) (Roberto Divia).
+  \item As run co\"ordinator access to Logbook actions restricted to my role should be granted without external interventions and for the time span of my duties (e.g. for shifters the shifts before and after mine, plus my own shift) (Roberto Divia).
+  \item As run co\"ordinator I need to give ALICE collaborators write or read-only access to the logbook. These rights will be superseeded by equivalent rights given according to the function of the user (e.g. a ALICE collaborator with read-only access will be given write access during the time of his/her duties as a shifter, subsystem run co\"ordinator or system team member) (Roberto Divia).
+  \item As run co\"ordinator I may have to cross-reference log entries (e.g. by URL, by unique Reference ID, or by run number)  (Roberto Divia).
+  \item  As run co\"ordinator I may need to attach files to log entries. These files may contain text or binary information (PNGs, JPGs etc...) (Roberto Divia).
+  \item As run co\"ordinator I may need to cross reference log entries or other logbook fields (e.g. run numbers, fill numbers etc...) with whatever issue tracking system will be used by the ALICE collaboration (today: Jira). This association may also be done automatically by daemons (e.g. what is done today for EOR reasons and Jira tickets) (Roberto Divia).
+\end{enumerate}
+
+\subsection{Subsystem Co\"ordintor}
+Each subsystem has its own co\"ordinator. In the future these will be called SRCs.
+\begin{enumerate}
+  \item As a subsystem responsible, I want to be notified by email (or other channels) of log entries which are related with my subsystem so that I can better follow-up activities without having to constantly visit the product (Vasco). 
+  \item As subsystem expert, I want to attach quality flags to runs so that physicists can use them while searching for good data sets for their analysis (Vasco). 
+  \item As a subsystem expert, I want to store custom fields that are only relevant to my subsystem so that I can correlate them with the rest of the metadata repository (e.g. ‘fetch all runs with configuration X where this happened to my detector’) (Vasco). 
+  \item As an detector expert I would like be able to extract run/fill information in a format, which allows easier
+analysis than txt files, e.g. root-files to be able to do specific statistical analysis (Robert Munzer).
+  \item As a detector expert I would appreciate to subscribe to certain kind of logbook messages, e.g. EOS report (Robert Munzer).
+  \item As an SRC I would like to be able to create own detector specific templates for example On-Call interventions. In this case I can specify the relevant information which are required from the OnCall shifter for different kind of “standard” events (Robert Munzer).
+  \item As ECS/DAQ System Run Coordinator I need a way to access information of runs matching a selection criteria I specify (timestamps, run numbers, run types, included detectors etc...). Navigation between runs must be easy and quick. The target is to check the global runs (production and tests) for quality and errors (Roberto Divia).
+  \item As System Run Coordinator I need ways to interrogate all the runs where the System I am responsible for participated and to get access to individual run entries and to summary statistics (Roberto Divia).
+  \item As subsystem run co\"ordinator I have to create log entries concerning any system (alone or in combination) (Roberto Divia).
+  \item As subsystem run co\"ordinator I need to be able to update the logbook information for what concerns my system and other systems, in particular the run quality flag and the EOR reason(s). The question arises if subsystem run co\"ordinators can update information associated to other systems (e.g. EOR reasons) as it is the case today (Roberto Divia).
+  \item As subsystem run co\"ordinator I must be able to move collaborators to and out of subsystem teams. These action may be conflict the information stored in SAMS (Roberto Divia).
+  \item As subsystem run co\"ordinator I may request to receive automatic e-mails concerning all Logbook entries that include the System I am working for (either without distinction or using special selection criterias). The e-mail delivery address will probably be an e-group (single e-mail address <...>@cern.ch) (Roberto Divia).
+  \item As subsystem run co\"ordinator access to Logbook actions restricted to my role should be granted without external interventions and for the time span of my duties (e.g. for shifters the shifts before and after mine, plus my own shift) (Roberto Divia).
+  \item As subsystem run co\"ordinator I need to give ALICE collaborators write or read-only access to the logbook. These rights will be superseeded by equivalent rights given according to the function of the user (e.g. a ALICE collaborator with read-only access will be given write access during the time of his/her duties as a shifter, subsystem run co\"ordinator or system team member) (Roberto Divia).
+  \item As subsystem run co\"ordinator I may have to cross-reference log entries (e.g. by URL, by unique Reference ID, or by run number)  (Roberto Divia).
+  \item  As subsystem run co\"ordinator I may need to attach files to log entries. These files may contain text or binary information (PNGs, JPGs etc...) (Roberto Divia).
+  \item As subsystem run co\"ordinator I may need to cross reference log entries or other logbook fields (e.g. run numbers, fill numbers etc...) with whatever issue tracking system will be used by the ALICE collaboration (today: Jira). This association may also be done automatically by daemons (e.g. what is done today for EOR reasons and Jira tickets) (Roberto Divia).
+
+\end{enumerate}
+
+\subsection{System team member}
+\begin{enumerate}
+  \item As system team member I have to create log entries concerning any system (alone or in combination) (Roberto Divia).
+  \item As run co\"ordinator I may have to cross-reference log entries (e.g. by URL, by unique Reference ID, or by run number)  (Roberto Divia).
+  \item  As system team member I may need to attach files to log entries. These files may contain text or binary information (PNGs, JPGs etc...) (Roberto Divia).
+  \item As system team member I may need to cross reference log entries or other logbook fields (e.g. run numbers, fill numbers etc...) with whatever issue tracking system will be used by the ALICE collaboration (today: Jira). This association may also be done automatically by daemons (e.g. what is done today for EOR reasons and Jira tickets) (Roberto Divia).
+\end{enumerate}
+
+\subsection{CERN administration officer}
+\begin{itemize}
+  \item As CERN administration officer I need to check all the on-call intervention records issued by CERN personnel (use case to be cross-checked with EP-AID-DA management) (Roberto Divia).
+\end{itemize}
+
+\subsection{Developer}
+\begin{enumerate}
+  \item As a developer, I want to programmatically fetch log entries that match a given criteria so that I can build custom logic or applications based on existing data (Vasco). 
+  \item As a developer, I want to programmatically fetch runs that match a given criteria so that I can build custom logic or applications based on existing data (Vasco). 
+\end{enumerate}
+
+\subsection{Administrator}
+\begin{enumerate}
+  \item As an administrator, I want to have a dashboard that gives me log-entry related analytics so that I follow the evolution of the repository (Vasco). 
+  \item As Administrator I need to be able to update the logbook information for what concerns the bookkeeping system and other systems, in particular the run quality flag and the EOR reason(s). The question arises if subsystem run co\"ordinators can update information associated to other systems (e.g. EOR reasons) as it is the case today (Roberto Divia).
+  \item As administrator I must be able to move collaborators to and out of subsystem teams. These action may be conflict the information stored in SAMS (Roberto Divia).
+    \item As administrator access to Logbook actions restricted to my role should be granted without external interventions and for the time span of my duties (e.g. for shifters the shifts before and after mine, plus my own shift) (Roberto Divia).
+  \item Only administrator may be given the possibility to remove log entries (and I am not even sure about this) (Roberto Divia).
+\item As administrator I must be able to trigger the migration of the whole system (server, databases etc...) to alternate sites to cover scenarios such as HW failures or long power interruptions (e.g. Xmas shutdown). This migration should be as automatic as possible, particularly for the 1st example above (hot stand-by?) (Roberto Divia).
+  \item As administrator I may request to replicate either selected portions or all of the Logbook data to external sites and to provide adequate access tools to it (to facilitate read-only accesses) (Roberto Divia).
+
+\end{enumerate}
+
+\section{Product Perspective}
+\subsection{User Interface}
+\subsection{Hardware Interface}
+\subsection{Software Interface}
+\subsection{Communication Interface}
+\subsection{Memory Constraints}
+\section{Product Functions}
+\section{User Characteristics}
+\section{Assumptions and Dependencies}
+\section{Apportioning of Requirements}
+
+\chapter{Specific Requirements}
+\section{External Interfaces}
+\subsection{Data Description}
+\section{Functions}
+\subsection{Run Conditions and Statistics}
+Allows users to view runs conditions and statistics either in tabular or detailed view
+\subsection{Data Mining}
+Allows users to view aggregated information (eg. per detector)
+\subsection{Data Export}
+Allows users to export the data stored in the logbook to several formats (eg. XML, ASCII, EXCEL)
+\subsection{Log Entries and Files}
+Allows users to view/insert Log Entries with optional file attachment
+\subsection{Search and Filtering}
+Allows users to filter the different data stored in the logbook by several search criteria
+\subsection{Access Control}
+The Alice Electronic Logbook uses the CERN Authentication platform to authenticate the users. Therefore, users should use their NICE credentials.
+
+To logout from the Alice Electronic Logbook, users should click on the "Logout" button in the top menu:
+\section{Software System Attributes}
+The software system attributes, system quality attributes or non functional requirements are not yet fully determined. 
+
+
+
+
+\section{Availability}
+Given the criticality of the accounting data, the repositories should run in high availability. The views do not strictly need high availability for as long as failures remain rare and downtime low and as long as it doesn’t impact operations.
+
+\begin{itemize}
+  \item Every activity should be logged
+  \item Bookkeeping should not be the reason for EOR
+  \item GUI is not critical
+  \item Repository is critical
+  \item Database should be highly available
+\end{itemize}
+
+
+\section{Backup}
+Backups of the repositories are mandatory. CERN facilities such as tape system can be used to store the backups. For disaster recovery, a remote copy might make sense. 
+\begin{itemize}
+  \item Once a day a back up is done
+  \item Redundancy should be considered
+\end{itemize}
+
+\section{Configuration management}
+Recipes for $O^2$ adopted configuration management tools (most likely Puppet or Ansible) are mandatory in order to allow deployment and configuration changes without intervention of main developers. 
+
+\section{Documentation}
+User documentation is needed for complex actions. Administrator documentation for system administrators and on call support crew during operations. Developers documentation for newcomers, long term maintainability and in case of need for handover. 
+\begin{itemize}
+  \item Use pop ups (contextual help)
+\end{itemize}
+
+\section{Evolution}
+Changes are frequent due to new requirements, changes in workflows and operational optimizations. New developments should be expected during the full lifetime of the software. The software also needs to be supported until the end of Run 4 (currently 2029). SLAs should be agreed on between AUAS and ALICE $O^2$.
+
+\section{Guidelines}
+Software code should follow O2 guidelines and software processes. Several guidelines are available:
+\begin{table}
+\begin{tabular}{lp{7cm}}
+  \hline
+  Subject & https://github.com/AliceO2Group/\\
+  \hline
+  \hline
+   C++ & CodingGuidelines\\
+   \hline
+   Web development & Gui/blob/master/docs/DEV.md\\
+   \hline
+   Build system & AliceO2\\
+   \hline
+\end{tabular}
+\end{table}
+
+\section{Interoperability}
+
+Software needs to integrate with the following systems: 
+\begin{itemize}
+  \item Configuration Management
+  \item Monitoring (will become clear in February 2018)
+  \item Logging of the system (Logstash, Elastic Search, etc). and of applications in use.
+  \item Build system
+  \item O2 
+  \item Grid operations (Alien, LPM) 
+  \item AliBuild which is extensively documented
+  \item Alien and LPM need to be changed
+\end{itemize}
+
+
+\section{Licensing}
+Software needs to be compatible with O2 project licensing guidelines (GPLv3, copyright owners are all participating institutes). 
+License available here. 
+
+\section{Performance}
+The repository should handle the load from processes running in the O2 farm and jobs running on the grid. The web server should handle the load from human visitors (should not be very high) and the load from programmatic access via the REST API. The numbers for performance of the elements mentioned are to be decided in due time. Web GUI response time should follow accepted guidelines and the acceptable latency should conform to common standards.
+
+\section{Platform compatibility}
+The software should be compatible with the $O^2$ supported platforms. Server components will run in the $O^2$ facility at Point Two. The operating system will most likely be CentOs 7 or similar Linux distribution. Programmatic APIs should run on all target platforms (Linux, Apple). GUI should run on major browsers (Firefox, Chrome, Safari). Microsoft Edge to be checked.
+
+\section{Security}
+There should be integration with CERN Single Sign On services. And roles based on CERN e-groups. By use of certificates users get access. This is done local.
+
+\section{Serviceability}
+Support crews should be able to independently diagnosis and either restore the service to nominal conditions or migrate to a new instance. Access model to production instances by developers team to be decided.
+
+\section{Connectivity}
+The system should be able to function correctly without an internet connection.
+
+\section{Usability}
+
+\section{Efficiency}
+\section{Reliability}
+\section{Portability and Scalability}
+\section{System Models}
+\section{Use Case: Error Handling}
+
+
+
+
+\end{document}
