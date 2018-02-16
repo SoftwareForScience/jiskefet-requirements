@@ -1,0 +1,115 @@
+
+\chapter{Specific Requirements}
+\section{External Interfaces}
+\subsection{Data Description}
+\section{Functions}
+\subsection{Run Conditions and Statistics}
+Allows users to view runs conditions and statistics either in tabular or detailed view
+\subsection{Data Mining}
+Allows users to view aggregated information (eg. per detector)
+\subsection{Data Export}
+Allows users to export the data stored in the logbook to several formats (eg. XML, ASCII, EXCEL)
+\subsection{Log Entries and Files}
+Allows users to view/insert Log Entries with optional file attachment
+\subsection{Search and Filtering}
+Allows users to filter the different data stored in the logbook by several search criteria
+\subsection{Access Control}
+The Alice Electronic Logbook uses the CERN Authentication platform to authenticate the users. Therefore, users should use their NICE credentials.
+
+To logout from the Alice Electronic Logbook, users should click on the "Logout" button in the top menu:
+\section{Software System Attributes}
+The software system attributes, system quality attributes or non functional requirements are not yet fully determined. 
+
+
+
+
+\section{Availability}
+Given the criticality of the accounting data, the repositories should run in high availability. The views do not strictly need high availability for as long as failures remain rare and downtime low and as long as it doesn’t impact operations.
+
+\begin{itemize}
+  \item Every activity should be logged
+  \item Bookkeeping should not be the reason for EOR
+  \item GUI is not critical
+  \item Repository is critical
+  \item Database should be highly available
+\end{itemize}
+
+
+\section{Backup}
+Backups of the repositories are mandatory. CERN facilities such as tape system can be used to store the backups. For disaster recovery, a remote copy might make sense. 
+\begin{itemize}
+  \item Once a day a back up is done
+  \item Redundancy should be considered
+\end{itemize}
+
+\section{Configuration management}
+Recipes for $O^2$ adopted configuration management tools (most likely Puppet or Ansible) are mandatory in order to allow deployment and configuration changes without intervention of main developers. 
+
+\section{Documentation}
+User documentation is needed for complex actions. Administrator documentation for system administrators and on call support crew during operations. Developers documentation for newcomers, long term maintainability and in case of need for handover. 
+\begin{itemize}
+  \item Use pop ups (contextual help)
+\end{itemize}
+
+\section{Evolution}
+Changes are frequent due to new requirements, changes in workflows and operational optimizations. New developments should be expected during the full lifetime of the software. The software also needs to be supported until the end of Run 4 (currently 2029). SLAs should be agreed on between AUAS and ALICE $O^2$.
+
+\section{Guidelines}
+Software code should follow O2 guidelines and software processes. Several guidelines are available:
+\begin{table}
+\begin{tabular}{lp{7cm}}
+  \hline
+  Subject & https://github.com/AliceO2Group/\\
+  \hline
+  \hline
+   C++ & CodingGuidelines\\
+   \hline
+   Web development & Gui/blob/master/docs/DEV.md\\
+   \hline
+   Build system & AliceO2\\
+   \hline
+\end{tabular}
+\end{table}
+
+\section{Interoperability}
+
+Software needs to integrate with the following systems: 
+\begin{itemize}
+  \item Configuration Management
+  \item Monitoring (will become clear in February 2018)
+  \item Logging of the system (Logstash, Elastic Search, etc). and of applications in use.
+  \item Build system
+  \item O2 
+  \item Grid operations (Alien, LPM) 
+  \item AliBuild which is extensively documented
+  \item Alien and LPM need to be changed
+\end{itemize}
+
+
+\section{Licensing}
+Software needs to be compatible with O2 project licensing guidelines (GPLv3, copyright owners are all participating institutes). 
+License available here. 
+
+\section{Performance}
+The repository should handle the load from processes running in the O2 farm and jobs running on the grid. The web server should handle the load from human visitors (should not be very high) and the load from programmatic access via the REST API. The numbers for performance of the elements mentioned are to be decided in due time. Web GUI response time should follow accepted guidelines and the acceptable latency should conform to common standards.
+
+\section{Platform compatibility}
+The software should be compatible with the $O^2$ supported platforms. Server components will run in the $O^2$ facility at Point Two. The operating system will most likely be CentOs 7 or similar Linux distribution. Programmatic APIs should run on all target platforms (Linux, Apple). GUI should run on major browsers (Firefox, Chrome, Safari). Microsoft Edge to be checked.
+
+\section{Security}
+There should be integration with CERN Single Sign On services. And roles based on CERN e-groups. By use of certificates users get access. This is done local.
+
+\section{Serviceability}
+Support crews should be able to independently diagnosis and either restore the service to nominal conditions or migrate to a new instance. Access model to production instances by developers team to be decided.
+
+\section{Connectivity}
+The system should be able to function correctly without an internet connection.
+
+\section{Usability}
+
+\section{Efficiency}
+\section{Reliability}
+\section{Portability and Scalability}
+\section{System Models}
+\section{Use Case: Error Handling}
+
