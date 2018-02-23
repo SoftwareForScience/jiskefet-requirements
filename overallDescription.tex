@@ -13,7 +13,174 @@
 \section{Product functions}
 
 \section{User Characteristics}
+The bookkeeping systems will have several different users. An overall distinction can be made between users who create input and users who only read data. Another distinction can be made between human and machine users. 
 
+In the week of 11 December Marten Teitsma and Heiko van der Heijden interviewed several people at CERN. A summary of these interviews is given in this chapter.
+
+
+
+\subsection{User}
+
+
+
+\subsection{Shifter}
+A shifter is a person who operates a part of ALICE. One of the subsystems his or her responsibility. A shifter takes on a shift of 8 hours which can be in daytime or nighttime. A shifter is employee of collaborating member of ALICE. Level of education varies but is most of the time Master or PhD in Physics.
+
+\subsection{Run coordinator}
+The run co\"ordinator is, together with the deputy run co\"ordinator responsible for the operation of ALICE. Information provided for in this Section is gathered during an interview with Gracia who is currently run co\"ordinator. Next year Kristian Gulbrandsen will be run co\"ordinator. They have a full overview of what to do for a whole year. The input for the activities is given by the Physics Board. So they determine which parts of the machine are activated, how the triggers work and what the DAQ should do. They know what is working and what not and take action when things are not in line with the plan. Recurrent problems are seen into. 
+
+When ALICE is active there are five persons in the operater room. The run manager stays for two weeks and is 24/7 in the operator room. The crew of four consists of a shift leader, who is co\"ordinator of the crew and three shifters, i.e. a DAQ-shifter, a DCS-shifter and a DQM-shifter. A shift takes eight hours and is done within six days. Each shifter takes two morning shifts, two evening shifts and two night shifts. Some shifters do take only one shift sequence of six days. Shifters have various degrees of experience. Shifters only need the most recent information. 
+
+The current electronic logbook provides all the information needed by the run co\"ordinator. It gives
+\begin{itemize}
+  \item real-time information, 
+  \item summaries (plots), which could be a bit flexible,
+  \item data taking efficiency in relation to time needed,
+  \item selected fills,
+  \item average,
+  \item other statistical information
+\end{itemize}
+ 
+The run co\"ordinator does not use MonAlisa. The shift leader marks runs as good or bad. When detectors do their job a run will be declared as good. The runtype is also given:
+\begin{itemize}
+  \item physics run,
+  \item technical run,
+  \item cosmic run.
+\end{itemize}
+The automatic notification done by the subsystems is a good thing. For the End of Shift (EOS) a template for the report would come in handy. An auto-save should be implemented because sometimes a log entry gets lost because of authentication problems, e.g. a screen is open for too long. And sometimes more or less important information is not mentioned because a shifter has forgotten about it.
+
+There is no information of data acquisition for a fill. Beamer parameters are missing also:
+\begin{itemize}
+  \item crossing angle,
+  \item b\'eta star: $\beta^*$,
+  \item position of $xy$ over interaction point.
+\end{itemize}
+
+An idea would be to have different looks:
+\begin{itemize}
+  \item shifter look, which can be simple,
+  \item expert look,
+  \item another look.
+\end{itemize}
+
+
+
+
+
+\subsection{Subsystem run coordinator}
+A subsystem co\"ordinator is responsible for a detetector or subsystem of ALICE. Information provided for in this Section is gathered during an interview with Robert who is subsystem co\"ordinator of TPC or SRC. A subsystem co\"ordinator needs to have data about this system when called on. All info needed is provided for in the current log system. The fill or run info, i.e. configuration parameters, relates to issues. This info is related to log entries. It is possible now to look into it over a long period.
+
+In the current logbook it is not always easy to extract information about the subsystem. To get the needed information it is nowadays sometimes necessary to do things by hand. Exporting data is not always easy because there is no standard export format. A root-file format would come in handy for this.
+
+The End Of Shift (EOS) report is often not easily accessible. The shifter types a file in its own way, using his own words, in his own order and sometimes forgetting things. An idea could be to parse this text or the system should ask whether a subsystem should be mentioned. A template for the EOS-report is another idea.
+
+The subsystem co\"ordinator wants to be reported when something is going with his system. He should not have to take action for himself to find out things.
+
+An on call expert should use a template for categories of issues. Such a template could use questions and contain mandatory information. Perhaps based on already available information which is collected on the fly. Uniformity of reports does help a lot to gather information quickly.
+
+There is in this area a small line between monitoring and bookkeeping. A difference can be found based on interaction or luminosity rate. Currently specific subsystem data is not stored in the bookkeeping system. It is stored in the DCS.
+
+
+
+\subsection{DAQ Run coordinator}
+Information provided for in this Section is gathered during an interview with Roberto Divia who is DAQ run co\"ordinator. The subsystem run co\'ordinator gives quality flags. The subsystem run co\"ordinator meets weekly with the run co\"ordinator and other subsystem run co\"ordinators. Then is feedback given on the operational quality. Recurrent problems and the planning are discussed.
+
+There is no correction from offline to online. The Data Quality Monitor (DQM) will become Quality Control and shall be a very small part of $O^2$. In $O^2$ there is only one way: from synchronous to asynchronous. From the High Level Trigger (HLT) the data goes offline. The HLT throws away 99\% of the data. The HLT is a subsystem which will become a shifters task. There will be counters concerning HLT. HLT creates data and less metadata. 
+
+The DAQ creates metadata, just as other subsystems. This metadata has to be stored in the bookkeeping system. The electronic logbook is used to describe a run. Problems and human errors are logged. These log entries are post mortem used to find out what happened. The shifter, technician and subsystems themselves are creating this data. On callers also interact with the logbook. The logbook is the basic channel of communication.
+
+In training the shifter learn that when in doubt a log entry should be made. The EOS-report is an interaction with the (subsystem) run co\"ordinator. A template should be enforced. 
+
+Roberto is often called upon to currate End or Run (EOR) reasons, reasons to end the run and thus stop ALICE. He looks for reasons in the electronic logbook. In 99\% of the EORs he succeeds in finding the reason. EOR reasons are given at first by subsystems. Like a stone in a river it is hard to find the wave which causes the other waves. Roberto uses log files, created by the subsystems, to find the reasons. When an error occurs outside a run then it is not shown in the logbook but can be of interest when looking for EOR reasons. 
+
+Follow up or track a specific issue should be in the logbook and not in JIRA as now is the case. The new system should have the functionality to add comments and edit then. But never, never erase anything!
+
+The gas log entries are for gas technicians. This is a general service of CERN.
+
+Some remarks:
+\begin{itemize}
+  \item there should be log entries for other users,
+  \item in the logbook there should be 3 or 4 roles,
+  \item each role, user or specific person should have read, write or administration access.
+\end{itemize}
+
+Shifters are using Shift Accounting Managing System (SAMS). Shifters should be restricted in their rights. 
+
+Shifters do have problems with the electronic logbook:
+\begin{itemize}
+  \item they forget the permission for the logbook: to write you have to be in a list,
+  \item shifters have to do some training which has to be marked down in SAMS, otherwise they can't do a shift,
+  \item there should be a coherent way to create entries (a template?),
+  \item the less freedom the better.
+\end{itemize}
+
+The worst people are those who come for six days and then leave. When shifters are not doing their job the right way, they can be reported and loose their credits. This does not happen often, just once or twice since 2009. But of course people make mistakes. There are day by day summary reports. The LHC reports daily. The PARs are reported each week. Shifters have to be able to fill in their report one day (24 hrs) after the end of shift.
+
+There are some disasters which can be mentioned. One such a disasters is when the platform for the logbook fails. This could mean an EOR. There is a redundant database for all the data. The logbook is always active. When the power is off (during Christmas) the logbook is transferred to CERN 1. 
+
+An actor often forgotten is Human Resources who have to be able to access the logbook to read whether somebody has worked as reported.
+
+
+
+
+
+
+
+
+\subsection{Subsystem team member}
+
+
+
+\subsection{Physics board}
+The Physics board meets regularly to discuss the experiment and what to do next. Information provided for in this Section is gathered during an interview with Marco van Leeuwen who is co\"ordinator of Physics Board. The board oversees and coaches the data analysis. The actual analysis is done by PhD-students and postdocs. The board is meeting once a week to discuss resource management and exchange information. The resource management concerns MC-analysis and data reconstruction. 
+
+The perspective of the data annalist is focused on the specific files he needs for his analysis, e.g. ` which file should I take when I want 13 TeV. There are several categories to discern:
+\begin{itemize}
+  \item energy levels
+  \item collisions (Pb-Pb, p-p, Pb-p and some other variants)
+  \item runlist concerning which detectors are used
+  \item muon arms
+\end{itemize}
+Questions such as `how many events are detected when a specific detector is working well?' is a typical question of the Physics Board. The same question can be asked about triggers. Triggers can change and with this change the main type of event can change.
+
+Concerning the Monte Carlo simulations the same set of information is needed. MC-simulations are, most often, anchored to a run or period with a specific detector configuration. These simulations can amount to 10 or even 100 simulations for each run configuration. These simulations must be searchable. This event generator creates a lot of collisions which can be of interest. An analysts seeks for photons, jets, strange particles etc.
+
+For a follow-up for the logbook JIRA is used. JIRA is also used for MC-simulations. TWiki is used by the ALICE DPG. In TWiki users make their own lay-out. 
+
+The perspective of the Physics Board is concerned with planning and resource management. How to organise the analysis, i.e. data reconstruction and MC-simulation. There is a top-down approach. Reconstruction is driven by the time of production. Simulation is done on demand, which is possible because the demand is not that big. The Physics Board has several needs or questions:
+\begin{itemize}
+  \item To make the planning possible an overview of storage and processing power (cpu) is needed. 
+  \item The use of resources per user to run jobs could be more detailed.
+  \item How much PB is available on disk for storage.
+  \item For MC-storage a fine grained but lacks an overview.
+  \item When I want to clean up, where do I have to look?
+  \item MC production requests.
+  \item Usage statistics (which data is popular?).
+  \item Sort out why a train takes a specific time to process.
+\end{itemize}
+Most data is replicated because a lot of people use the data.
+
+There are two views from the Physics Board:
+\begin{itemize}
+  \item clean up, to know what could be cleaned up
+  \item planning, when can this MC be run?
+\end{itemize}
+The is a need for reports on resource usage. This is a management view.
+
+
+
+
+
+
+\subsection{CERN administration officer}
+
+\subsection{DPG}
+
+\subsection{DPG-QA}
+
+\subsection{Developer}
+
+\subsection{Administrator}
 
 
 
