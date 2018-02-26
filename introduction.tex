@@ -95,6 +95,46 @@ Adapt to new O2 data model. Consolidate existing ALICE Electronic Logbook and Ru
 \section{Scope of the Bookkeeping System}
 The scope of the project to develop the bookkeeping system is restricted to keeping track of the configuration of ALICE, data produced by ALICE, and computations on this data. The bookkeeping system is not a monitoring system for ALICE.
 
+The bookkeeping system consists of two distinct subsystems with separate features and deadlines:
+\begin{itemize}
+  \item At 1 January 2019 the electronic logbook feature of the bookkeeping system has to be in place to be of assistance for the commissioning of several subsystems. 
+  \item the $O^2$ software has to be in place later. This concerns functionalities such as:
+  \begin{itemize}
+    \item datataking
+    \item QA
+    \item log activities
+    \item statistics for runs
+    \item database, for which a bookkeeping model is needed. This defined by what we want to store.
+  \end{itemize}
+  \item GUI
+  \item reporting
+\end{itemize}
+In the middle of 2020 a global commission is planned. Than a synchronous reconstruction should be possible. The generation of reports should be possible starting January 2021. Then a clean start with the system will be made.
+
+\begin{tabular}{cc}
+\hline
+Feature & deadline\\
+\hline
+\hline
+ Reconstruction and callibration  & 2020 commissioning \\
+ \hline
+Simulation   & 2020\\
+\hline
+Analysis & 2020\\
+\hline
+\end{tabular}
+
+\subsection{Migration}
+Data taking with the current system stops end 2018. Then a migration can be done. Old statistics from the current system should be combined with the new system. And the data stored in the old database should be migrated to the new database. Or the old database could be kept in place and have an interface with the new system. 
+
+The offline activities will be going on. A date has to be set to use the new bookkeeping system. It should be carefully prepared which part will be migrated.
+
+Collaborative tools will be used. The bookkeeping system is part of WP 8. WP 8 has once every two weeks a meeting at Tuesday morning at 10.00 AM. Once every two months the $O^2$ technical board meets. 
+
+An $O^@$ data model for bookkeeping should be available in January 2018.
+
+
+
 \section{Definitions, Acronyms, and Abbreviations}
 
 \subsection{Log Entry}
