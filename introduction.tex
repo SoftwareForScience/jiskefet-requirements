@@ -282,6 +282,9 @@ An $O^@$ data model for bookkeeping should be available in January 2018.
 
 \section{Definitions, Acronyms, and Abbreviations}
 
+
+
+
 \subsection{Log Entry}
 A Log Entry is a text message that describe an intervention or an event that happened. It can be generated either by humans (e.g. a shifter enters his/her end-of-shift report) or by machines (e.g. a detector logs some abnormal situation automatically). 
 
@@ -290,19 +293,189 @@ A Run is a unique ID that identifies a synchronous data processing session in th
 
 \subsection{LHC Fill}
 An LHC Fill is a unique ID that identifies a period of activity in the LHC accelerator. It normally ranges from a few minutes to tens of hours. It is generated and managed by the LHC system and published via DIP protocol. 
+
+\subsection{Offline metadata model}
+The offline activities are administered by AliMonitor\footnote{Most information provided in this chapter is gathered during an interview with Costin Grigoras on Tuesday 12 December 2017}. Costin Grigoras is the main developer of this system. The current system is the minimum which is needed for this activity. Figure \ref{fig:offlineWorkflow} shows the workflow off the offline activities. Castor is software to manage tapes on CERN tier 0. For all these files there is an url stored in ALien (e.g. pointers). Shuttle is calibration data stored on EOS. The Lightweight Production Manager (LPM) is software to manage disks on CERN. The LPM decides based on several variables that a run will be reconstructed. CPass means Calibration Pass. 
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.25]{./images/offline_workflow.png}
+    \caption{Calibrating and reconstructing the signals}
+    \label{fig:offlineWorkflow}
+  \end{center}
+\end{figure}
+
+\subsubsection{Run entity}
+Run entities are in several forms. There is the period name (an integer and alphanumeric letter). When conditions are simular the period name is kept. This may take weeks. So there are 10 to 15 periods each year. Run change very often. A period name is a short cut for same sort of runs.
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.15]{./images/run_entity.png}
+    \caption{Screenshot of run condition table}
+    \label{fig:run_con_table}
+  \end{center}
+\end{figure}
+
+In Figure \ref{fig:run_con_table} a screenshot of the run condition table is shown. In here the period name and interaction type can be found. The number of raw data chunks and the total size. Also the AliEn directory where the data is located. The specific detectors which participated in this run and the SHUTTLE-status. At last one can find the number of events in several classes.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.2]{./images/run_view.jpg}
+    \caption{A run view}
+    \label{fig:run_view}
+  \end{center}
+\end{figure}
+
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.2]{./images/run_view_mc.jpg}
+    \caption{A Monte Carlo run view}
+    \label{fig:run_view_mc}
+  \end{center}
+\end{figure}
+
+The coding scheme is human made. In the run view a masterjob ID is shown on the upper left side. This identifier is unique. A masterjob can be divided into subjobs per file. A Monte Carlo view is more or less the same. Such a run can be based on the conditions a raw file is produced. In such a case it is called anchored to a raw file. On the upper right side a color code indicates the status of the (sub-) job. The firs process for each file is a snapshot of the raw data in order to determine the same conditions for every process.
+
+The software version for each period(name) is the same. This is not hard. Software versions don't change during a run. The data self should never be transferred. Always a pointer to a file is used. The configuration data can be transferred. When a masterjob is done then statistics are generated. 
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.25]{./images/workflow.jpg}
+    \caption{}
+    \label{fig:}
+  \end{center}
+\end{figure}
+
+The workflow has many steps:
+\begin{itemize}
+  \item OCDB snapshot creation (single special job)
+  \item Per chunk reconstruction (one subjob per chunk)
+  \item TPC SpacePointCalibration
+  \item AOD merging (many chunk AODs to one file)
+  \item QA merging in stages (to get a single QA\_results.root file per run)
+  \item Sending notification emails / cleanup of intermediate steps
+\end{itemize}
+
+Pass 36 is just a name. 
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.25]{./images/timeline.png}
+    \caption{A timeline of a run}
+    \label{fig:timeline}
+  \end{center}
+\end{figure}
+
+A timeline such as shown in Figure \ref{fig:timeline} is needed.
+
+\subsection{metadata structures}
+\subsubsection{Production}
+All (master) jobs of a given type are grouped together. They get a unique tag, eg. LHC17g8a\_fast. Here is `17' the year of production, `g' a symbol for Monte Carlo jobs and `8a' a number given by the bookkeeping system. A common description of characteristics of the data and software packages used is:
+\begin{quotation}
+p-Pb, 5.02 TeV - JJ events embedded in EPOS-LHC events anchored to LHC16qt, FAST only, ALIROOT-7270
+\end{quotation}
+The type of masterjob can be:
+\begin{itemize}
+  \item MC,
+  \item RAW, 
+  \item Merging, 
+  \item Filtering, 
+  \item Train, 
+  \item ... (something else in the future).
+\end{itemize}
+Part of this administration is also the requested or produced number of events. Also, it should be administered when was the last time a period or run was accessed.
+
+\subsubsection{Job}
+
+A job is a wrapper around an AliEn masterjob ID. It belongs to a production ID. There is an owner and an output directory. The parent job ID should also be given to chain processes. The accounting information to register is:
+\begin{itemize}
+  \item Output size, analyzed/produced events
+  \item CPU, Wall time, i.e. how long a job stayed on a worker node (this should be a bit longer than CPU time)
+  \item No. of subjobs in each state
+  \item Submission/completion timestamp
+  \item Stack traces for failed jobs
+\end{itemize}
+
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.15]{./images/jdl_example.png}
+    \caption{An example of a JDL reconstruction masterjob}
+    \label{fig:jdl_example}
+  \end{center}
+\end{figure}
+Figure \ref{fig:jdl_example} shows an example of a reconstruction masterjob written in Job Description Language (JDL). Event Summary Data (ESD) should be generated. The job execution is stored for a week. Some statistics concerning these activities would be nice to have.
+
+\subsubsection{Subjobs}
+Jobs can be split into subjobs as shown in Figure \ref{fig:splitting_subjobs}.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.15]{./images/splitting_subjobs}
+    \caption{Splitting jobs by AliEn}
+    \label{fig:splitting_subjobs}
+  \end{center}
+\end{figure}
+
+These jobs are executed independently. The used resources are monitored real time.
+
+Subjobs are the finest granularity of processing. Each subjob has several parameters:
+\begin{itemize}
+  \item Software packages
+  \item Environment, execution parameters
+  \item Main executable and validation scripts
+  \item Input set (data files, conditions, macros)
+  \item Output set (results of the execution)
+\end{itemize}
+These execution logs are part of the output. This hard work as shown by some statistics. The number of jobs which run parallel  is 120,000. There is a turnover of 10 per second. Each second 200,000 entities are monitored and AliEn has to process 40,000 queries each second.
+
+\subsubsection{RCT}
+This data structure consists of:
+\begin{itemize}
+  \item Quality flags defined by detector experts
+  \item Status code, color code, description
+  \item Values associated to the same (run,pass) tuples
+\end{itemize}
+These parameters are set by QA experts of each detector group. Physic Work Groups (PWG) use this information to select specific and good runs for their analysis.
+
+\subsubsection{Train}
+A train is a considerable amount of jobs which all use the same data set. This is to reduce the I/O for all these jobs
+The main metadata components of this data structure is:
+\begin{itemize}
+  \item Dataset (reference productions+file patterns+subset of runs)
+  \item Software packages (one new tag daily)
+  \item Participating wagons (tasks)
+  \item Each gets the current event from the main loop
+\end{itemize}
+Each train is tested because its good practice and because the wagons are created by non-software engineers. There is a test machinery for each wagon and overall execution to prevent fatal errors and memory leaks and guarantee a reasonable CPU time. When a train is formed the LPM takes over for the submission, management, merging, notification of completion to end users
+
+\subsubsection{JIRA production tickets}
+In the JIRA produciton tickes running parameters are discussed. Also are quality and bugs tracked from the request.
+
+\subsubsection{AliEn file catalog}
+This is a set of input files as result of a `find` command. It results for instance in a number of OCDB files for a given run. There are 4 billion files in the namespace which amounts to 92 PB of data.
+
+\subsubsection{Conclusion}
+The new system should be linked to the file catalog which itself is outside the scope of the bookkeeping system development. It should be be an intermediate service. Concepts, procedures, work flow, metadata will stay the same.
  
 \begin{table}[h]
 \begin{center}
 \begin{longtable}{ll}
+    \hline
     ALICE & A Large Ion Collider Experiment\\
+    \hline
     API & Application Programming Interface\\
+    \hline
     DAQ & Data Acquisition subsystem \\
+    \hline
     ID & Identity Document\\
+    \hline
     IEEE & Institute of Electrical and Electronics Engineers\\
-     LHC  & Large Hydron Collider\\\
+    \hline
+     LHC  & Large Hydron Collider\\
+     \hline
      $O^2$ & Online and Offline\\
-     
-       & \\
+     \hline
     \end{longtable}
       \caption{Acronyms}
   \label{tab:acronyms}
