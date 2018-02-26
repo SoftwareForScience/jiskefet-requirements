@@ -1,9 +1,68 @@
 \chapter{Introduction}
 
-\subsection{The ALICE experiment}
+\section{The ALICE experiment}
 The ALICE experiment is a collaborative experiment of approximate 1800 persons from 176 institutes in 41 countries. The collaborative work of this scientific and technical community is largely distributed over the planet and covering it from UTC-8 till UTC+9. The experiment is taking data and producing physics results since 2009. During the Long Shutdown in 2019 and 2020 a major upgrade will be done. 
 
-\subsection{The ALICE upgrade}
+\section{ALICE activities}
+
+
+At Point 2 where ALICE is located several activities are done:
+\begin{itemize}
+  \item Run Coordination, doing planning of shifts using SAMS
+  \item Technical Coordination which concerns infrastructure and safety such as the cooling system,
+  \item Detectors are located at Point 2, experts interventions are done 56 meters underground,
+  \item Central systems which also are visited by experts,
+  \item Shifts are conducted in the operating room (above ground).
+\end{itemize}
+
+The operation modes of ALICE are to be in:
+\begin{itemize}
+  \item run, 
+  \item calibration mode,
+  \item an operation to calibrate on cosmic rays.
+\end{itemize} 
+
+
+\subsection{Data Acquisition}
+The Data Acquisition system (DAQ) is handling the dataflow from the detector electronics to storage. All this is done in memory and synchronous with LHC operations. Downtime of the DAQ results in lost data. Each data acquisition and the resulting data set is identified by a Run Number, i.e. a positive integer.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.3]{daq.png}
+    \caption{}
+    \label{fig:}
+  \end{center}
+\end{figure}
+
+\subsection{Reconstruction and calibration}
+What is measured in ALICE and its detectors are electrical signals. These signals have to be reconstructed in order to conclude that a particle has been present. The reconstruction has to take the detector conditions into account. This calibration is currently been done offline but will be done both offline as an asynchronous process and online as a synchronous process in the future. When the calibration is done online downtime of the computers working on the calibration will result in data loss. Because the calibration will be an integral part of the online system and each delay in this system will have immediate repercussions further up the line.
+
+On the same original raw data set multiple reconstruction passes can be done. This can be due to having found a bug in earlier reconstruction software and better software is developed or finding a not yet detected bias in the raw data resulting in a better calibration set. A new calibration set now becomes available within months. In the future this could be within hours. And so the system should be very flexible. It may happen that the same data will be re-calibrated 20 times. With the help of metadata this must be book kept.
+
+The Light Production Management runs operations on the offline activities which are done on the Grid. In Figure \ref{fig:offlineWorkflow} the CPasses are dry runs and OAD are Object Analysis Data. Such offline activity is done 24 hours each day of the week and all year along.
+
+
+\subsection{Simulation}
+To know which collisions are of interest and what we can learn from these collisions, simulations are created using among other methods the Monte Carlo (MC) statistical method. These simulations are run on the Grid and are completely decoupled from LHC operations. Normally such simulations are associated with or anchored to an actual raw data set taken from a run, i.e. the conditions for the run are the same as for the simulations. There is no limit to the number of MC productions for a particular run. A new MC production can be started because of better software becoming available or because the chosen parameters are different.
+
+
+\subsection{Data Preparation Group}
+Data Preparation Group was created for to do:
+\begin{itemize}
+  \item data preparation, i.e. reconstruction and simulation. This consists of production configuration, setup, calibration monitoring.
+  \item data processing, i.e. monitoring, execution, reporting, bug tracking.
+  \item quality assurance, i.e. validation and creating lists of good runs or data sets.
+\end{itemize}
+
+
+
+
+\subsection{Analysis}
+Physicists from all over the world are doing analyses on the reconstructed data and produce papers about their findings. The physicists are the end user of ALICE and the bookkeeping system. The analyses are run on the Grid which is completely decoupled from the LHC operations. Normally these analyses run as trains, i.e. multiple analysis jobs using the same data sets are packed together.
+
+
+
+\section{The ALICE upgrade}
 During the Long Shutdown 2 ALICE will be upgraded. The upgrade will be done on many subsystems:
 \begin{description}
   \item[ITS] A new Inner Tracking System will be installed. This new system will have an improved pointing precision. It will also be made of lesser material than before and become the thinnest tracker at the LHC.
