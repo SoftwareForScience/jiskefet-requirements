@@ -1,6 +1,59 @@
 \chapter{Introduction}
 
- 
+\subsection{The ALICE experiment}
+The ALICE experiment is a collaborative experiment of approximate 1800 persons from 176 institutes in 41 countries. The collaborative work of this scientific and technical community is largely distributed over the planet and covering it from UTC-8 till UTC+9. The experiment is taking data and producing physics results since 2009. During the Long Shutdown in 2019 and 2020 a major upgrade will be done. 
+
+\subsection{The ALICE upgrade}
+During the Long Shutdown 2 ALICE will be upgraded. The upgrade will be done on many subsystems:
+\begin{description}
+  \item[ITS] A new Inner Tracking System will be installed. This new system will have an improved pointing precision. It will also be made of lesser material than before and become the thinnest tracker at the LHC.
+  \item[TPC] The Time Projection Chamber will get new GEM technology for the read out chambers. The readout will be continuous and it will use faster readout electronics.
+  \item[CTP] A new Central Trigger Processor will be installed.
+  \item[DAQ] A brand new Data Acquisition system will be installed.
+  \item[HLT] A new High Level Trigger will be installed.
+  \item[MFT] In the Muon Forward Tracker a new SI tracker will be installed. The MUON pointing precision will be improved.
+  \item[MUON ARM] The MUON ARM will get new continuous readout electronics.
+  \item[FIT] There will be new Trigger detectors installed.
+  \item[TOF] The TOF will be readout faster.
+  \item[TRD] The TRD will be readout faster.
+  \item[ZDC] The ZDC will be readout faster.
+\end{description}
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.4]{alice_upgrade.jpg}
+    \caption{}
+    \label{fig:}
+  \end{center}
+\end{figure}
+After the Long Shutdown 2 the LHC produce Pb–Pb collisions at up to $L = 6.10^{27} cm^{-2} s^{-1}$. This results in an interaction rate of 50kHz. During Run 3 (2021-2023) pp collisions will be done at 14 TeV and Pb-Pb collisions at 5.5 TeV. In 2023 no Pb-Pb collisions are scheduled. After Long Shutdown 3 (2024-2026) the same schedule will be realised except for 2028 when p-Pb will be run at 8.8 TeV.
+
+The 50 kHz rate for collisions produces about 100 times more data than was produced in 2010. This will give the physicists the opportunity to detect very rare processes with very small signal over background ratio. Because the triggering techniques are very inefficient if not impossible support for continuous read-out is developed. Therefore a new computing system, $O^2$, is created. It will read-out the data of all interactions. Compress these data intelligently by online reconstruction. The system will be one common online-offline computing system.
+
+Unmodified raw data of all interactions shipped from detector to online farm in triggerless continuous mode. This will amount to 3.4 TB/s. Then a baseline correction and zero suppression will take place. The data volume will be reduced by zero cluster finder. No event is discarded. The average compression factor is 6.6. Then 500 GB/s will be shipped. A data volume reduction is done by online tracking. Only reconstructed data will be send to data storage. The average compression factor is 5.5. From here 90 GB/s will be transported. In the data Storage 1 year of compressed data will be kept. From this storage facility 20 GB/s will be transported to tier 0 and tier 1. The events will also be reconstructed for final calibration.
+
+From the detector electronics 8500 GBTs links will send signals to the 270 FLPs. These will use hardware acceleration using FPGAs. A switching network will distribute this data to 1500 EPNs. These processing nodes use GPUs for hardware acceleration. The EPNs use a switching network to send the data to the storage. This storage can write at 170 GB/s and read at 270 GB/s. The capacity for storage is 60 PB.
+
+To manage the $O^2$ update several work packages are created:
+\begin{description}
+  \item[WP 1] Data Model
+  \item[WP 2] Data Flow and System Simulation
+  \item[WP 3] Common Tools and Software
+  \item[WP 4] $O^2$ Software Framework– Common tools and infrastructure
+  \item[WP 5] Data distribution and load balancing
+  \item[WP 6] Detector readout
+  \item[WP 7] Quality Control
+  \item[WP 8] Control, Configuration and Monitoring
+  \item[WP 9] Event Display
+  \item[WP 10] Constant and Calibration DB
+  \item[WP 11] ALFA
+  \item[WP 12] Simulation
+  \item[WP 13] Reconstruction and Calibration
+  \item[WP 14] Analysis framework and facility infrastructure
+  \item[WP 15] Data Management
+  \item[WP 16] Computing Room CR1 (FLP)
+  \item[WP 17] Computing Room CR0 (EPN)
+\end{description}
+
 \section{Purpose}
 The purpose of this Software Requirements Specifications document is to have a central point for all the requirements of the bookkeeping system. It is not written with the goal to have a document with definite and final requirements for this system. During the process of developing this system requirements will be added and modified.
 
