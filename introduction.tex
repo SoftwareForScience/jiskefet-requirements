@@ -1,7 +1,7 @@
 \chapter{Introduction}
 
 \section{The ALICE experiment}
-The ALICE experiment is a collaborative experiment of approximate 1800 persons from 176 institutes in 41 countries. The collaborative work of this scientific and technical community is largely distributed over the planet and covering it from UTC-8 till UTC+9. The experiment is taking data and producing physics results since 2009. During the Long Shutdown in 2019 and 2020 a major upgrade will be done. 
+The ALICE experiment is a collaborative experiment of approximate 1800 persons from 176 institutes in 41 countries. The collaborative work of this scientific and technical community is largely distributed over the planet and covering it from UTC-8 till UTC+9. The experiment is taking data and producing physics results since 2009. During the Long Shutdown 2 (LS2) in 2019 and 2020 a major upgrade will be done. 
 
 \section{ALICE activities}
 
@@ -47,7 +47,7 @@ To know which collisions are of interest and what we can learn from these collis
 
 
 \subsection{Data Preparation Group}
-Data Preparation Group was created for to do:
+Data Preparation Group (DPG) was created for:
 \begin{itemize}
   \item data preparation, i.e. reconstruction and simulation. This consists of production configuration, setup, calibration monitoring.
   \item data processing, i.e. monitoring, execution, reporting, bug tracking.
@@ -63,7 +63,7 @@ Physicists from all over the world are doing analyses on the reconstructed data 
 
 
 \section{The ALICE upgrade}
-During the Long Shutdown 2 ALICE will be upgraded. The upgrade will be done on many subsystems:
+During the LS 2 ALICE will be upgraded. The upgrade will be done on many subsystems:
 \begin{description}
   \item[ITS] A new Inner Tracking System will be installed. This new system will have an improved pointing precision. It will also be made of lesser material than before and become the thinnest tracker at the LHC.
   \item[TPC] The Time Projection Chamber will get new GEM technology for the read out chambers. The readout will be continuous and it will use faster readout electronics.
@@ -73,9 +73,9 @@ During the Long Shutdown 2 ALICE will be upgraded. The upgrade will be done on m
   \item[MFT] In the Muon Forward Tracker a new SI tracker will be installed. The MUON pointing precision will be improved.
   \item[MUON ARM] The MUON ARM will get new continuous readout electronics.
   \item[FIT] There will be new Trigger detectors installed.
-  \item[TOF] The TOF will be readout faster.
-  \item[TRD] The TRD will be readout faster.
-  \item[ZDC] The ZDC will be readout faster.
+  \item[TOF] The TOF will be read out faster.
+  \item[TRD] The TRD will be read out faster.
+  \item[ZDC] The ZDC will be read out faster.
 \end{description}
 
 \begin{figure}[h]
@@ -85,14 +85,15 @@ During the Long Shutdown 2 ALICE will be upgraded. The upgrade will be done on m
     \label{fig:overview}
   \end{center}
 \end{figure}
-After the Long Shutdown 2 the LHC produce Pb–Pb collisions at up to $L = 6.10^{27} cm^{-2} s^{-1}$. This results in an interaction rate of 50kHz. During Run 3 (2021-2023) pp collisions will be done at 14 TeV and Pb-Pb collisions at 5.5 TeV. In 2023 no Pb-Pb collisions are scheduled. After Long Shutdown 3 (2024-2026) the same schedule will be realised except for 2028 when p-Pb will be run at 8.8 TeV.
+After the LS 2 the LHC produce Pb–Pb collisions at up to $L = 6.10^{27} cm^{-2} s^{-1}$. This results in an interaction rate of 50kHz. During Run 3 (2021-2023) pp collisions will be done at 14 TeV and Pb-Pb collisions at 5.5 TeV. In 2023 no Pb-Pb collisions are scheduled. After LS 3 (2024-2026) the same schedule will be realised except for 2028 when p-Pb will be run at 8.8 TeV.
 
-The 50 kHz rate for collisions produces about 100 times more data than was produced in 2010. This will give the physicists the opportunity to detect very rare processes with very small signal over background ratio. Because the triggering techniques are very inefficient if not impossible support for continuous read-out is developed. Therefore a new computing system, $O^2$, is created. It will read-out the data of all interactions. Compress these data intelligently by online reconstruction. The system will be one common online-offline computing system.
+The 50 kHz rate for collisions produces about 100 times more data than was produced in 2010. This will give the physicists the opportunity to detect very rare processes with very small signal over background ratio. Because the triggering techniques are very inefficient if not impossible, support for continuous read-out is developed. Therefore a new computing system, $O^2$, is created. It will read-out the data of all interactions and compress these data intelligently by online reconstruction. The system will be one common online-offline computing system.
 
-Unmodified raw data of all interactions shipped from detector to online farm in triggerless continuous mode. This will amount to 3.4 TB/s. Then a baseline correction and zero suppression will take place. The data volume will be reduced by zero cluster finder. No event is discarded. The average compression factor is 6.6. Then 500 GB/s will be shipped. A data volume reduction is done by online tracking. Only reconstructed data will be send to data storage. The average compression factor is 5.5. From here 90 GB/s will be transported. In the data Storage 1 year of compressed data will be kept. From this storage facility 20 GB/s will be transported to tier 0 and tier 1. The events will also be reconstructed for final calibration.
+Unmodified raw data of all interactions will be shipped from the detectors to the online farm in triggerless continuous mode. This  amounts to 3.4 TB/s. Then a baseline correction and zero suppression will take place. The data volume will be reduced by zero cluster finder. No event is discarded. The average compression factor is 6.6. Then 500 GB/s will be shipped. A data volume reduction is done by online tracking. Only reconstructed data will be send to data storage. The average compression factor is 5.5. From here 90 GB/s will be transported. In the Data Storage one year of compressed data will be kept. From this storage facility 20 GB/s will be transported to tier 0 and tier 1. The events will also be reconstructed for final calibration.
 
 From the detector electronics 8500 GBTs links will send signals to the 270 FLPs. These will use hardware acceleration using FPGAs. A switching network will distribute this data to 1500 EPNs. These processing nodes use GPUs for hardware acceleration. The EPNs use a switching network to send the data to the storage. This storage can write at 170 GB/s and read at 270 GB/s. The capacity for storage is 60 PB.
 
+\subsection{Work packages}
 To manage the $O^2$ update several work packages are created:
 \begin{description}
   \item[WP 1] Data Model
@@ -201,7 +202,7 @@ In all the logbook has approximately
   \item 20,000 file attachments,
   \item 280,000 runs
   \item 5,000 LHC fills
-\end{itemize} 37 GB data, 195
+\end{itemize}
 
 For this it uses a MySQL database with 27 tables and 312 fields. This is a single instance which is daily copied for external uses. Back-ups are sent to CERN-IT. The logbook has several APIs:
 \begin{itemize}
@@ -214,47 +215,45 @@ The Web GUI is created by using PHP on the server side. For this no framework is
 
 \subsubsection{AliMonitor}
 
-The AliMonitor is for bookkeeping of the Grid operations done to process data with the goal discerning data usable for (specific) physics analysis and data which is not. The AliMonitor is operating in an asynchronous mode, i.e. asynchronous with the LHC operations.The Grid is composed of Tier 0 and Tier 1 computers located at CERN and Budapest (Tier 0) and at 10 other places around the world (such as SARA and Nikhef (Amsterdam) for Tier 1. Users of AliMonitor are:
+The AliMonitor is for bookkeeping of the Grid operations done to process data with the goal discerning data usable for (specific) physics analysis and data which is not. The AliMonitor is operating in an asynchronous mode, i.e. asynchronous with the LHC operations. The Grid is composed of Tier 0 and Tier 1 computers located at CERN and Budapest (Tier 0) and at 10 other places around the world (such as SARA and Nikhef in Amsterdam) for Tier 1. Users of AliMonitor are:
 \begin{itemize}
   \item Data Preparation Group (DPG) to do reconstruction and simulation,
   \item Physics Working Groups for simulation and analysis
   \item ALICE physicists for simulation and analysis.
 \end{itemize}
-The activities done on the Grid are called jobs. A masterjob is loosely coupled on a run. Each masterjob is composed of subjobs which are loosely coupled on raw files.These jobs can be reconstruction passes and Monte Carlo (MC) productions. Reconstruction is done to adjust the data and get rid of biasses always present due to imperfection of the detectors. For example, it is known that the TPC for muons a bias of 5 microns creates. This is being corrected during reconstruction. Although a lot of these jobs are automated human intervention is possible.
+The activities done on the Grid are called jobs. A masterjob is loosely coupled on a run. Each masterjob is composed of subjobs which are loosely coupled on raw files. These jobs can be reconstruction passes and Monte Carlo (MC) productions. Reconstruction is done to adjust the data and get rid of biasses always present due to imperfection of the detectors. For example, it is known that the TPC for muons a bias of 5 microns creates. This is being corrected during reconstruction. Although a lot of these jobs are automated, human intervention is possible.
 
-The calibration and correction of raw data is not a one time event but can be done several times because of several reasons. It is possible that it is discovered that there is a specific bias in the data which should be corrected. It is possible someone creates a better algorithm, etc. The re-calibration is now being done within months. In the future it might be possible it will be done within hours because a part of the reconstruction will be done online. Because it is possible that data will be re-calibrated maybe even as often as 20 time the new bookkeeping system should be so flexible it can handle various scenarios.
+The calibration and correction of raw data is not a one time event but can be done several times because of several reasons. It is possible that it is discovered that there is a specific bias in the data which should be corrected or it is possible someone creates a better algorithm, etc. The re-calibration is now being done within months. In the future it might be possible it will be done within hours because a part of the reconstruction will be done online. Because it is possible that data will be re-calibrated maybe even as often as 20 time the new bookkeeping system should be so flexible it can handle various scenarios.
 
-When different jobs are being done on the same data so called trains are made. These trains are wagons of jobs which process all the same data. From the viewpoint of efficiency this makes a lot of sense. The LPM initiates this sort of operations.
+When different jobs are being done on the same data, so called trains are made. These trains are a sequence of wagons each representing a job which process all the same data. From the viewpoint of efficiency this makes a lot of sense. The LPM initiates this sort of operations.
 
-In all there is 97 GB data. There are 12.9 million master jobs (1 million simulation, 225,000 reconstruction, 5 million organised analysis and 6.5 million user jobs). There are 1 billion subjobs which are not stored permanently but summarized per master job. In the LPM there are 56,000 processing chains which are grouped in 13,000 job types (aka productions).
+In all there is 97 GB data. There are 12.9 million master jobs (1 million simulation, 225,000 reconstruction, 5 million organised analysis and 6.5 million user jobs). There are 1 billion subjobs which are not stored permanently but summarized per master job. In the (Lightweight Process Manager) LPM there are 56,000 processing chains which are grouped in 13,000 job types (aka productions).
 
 AliMonitor is using a PostgreSQL database with about 30 tables. It has two instances which are periodically back-upped. There are APIs for JDBC to be used for core processes and HTTP for csv- and XML-files. The web GUI is realised by a Tomcat webserver using Java Server Pages.
 
 \subsubsection{Scattered repositories}
 There are a few scattered repositories such as:
 \begin{itemize}
-  \item twiki
+  \item TWiki
   \item Jira
   
 \end{itemize}
 
+\subsection{Time constraints}
 
-
-The bookkeeping system consists of two distinct subsystems with separate features and deadlines:
+The bookkeeping system consists of several distinct subsystems with separate features and deadlines:
 \begin{itemize}
-  \item At 1 January 2019 the electronic logbook feature of the bookkeeping system has to be in place to be of assistance for the commissioning of several subsystems. 
+  \item At 1 January 2019 the electronic logbook feature of the bookkeeping system has to be in place, to be of assistance for the commissioning of several subsystems. 
   \item the $O^2$ software has to be in place later. This concerns functionalities such as:
   \begin{itemize}
-    \item datataking
     \item QA
-    \item log activities
     \item statistics for runs
-    \item database, for which a bookkeeping model is needed. This defined by what we want to store.
   \end{itemize}
-  \item GUI
+  \item bookkeeping of the online activities on the data
+  \item bookkeeping of the offline activities on the data
   \item reporting
 \end{itemize}
-In the middle of 2020 a global commission is planned. Than a synchronous reconstruction should be possible. The generation of reports should be possible starting January 2021. Then a clean start with the system will be made.
+In the middle of 2020 a global commission is planned. Then a synchronous reconstruction should be possible. The generation of reports should be possible starting January 2021. A clean start with the system will be made.
 
 \begin{tabular}{cc}
 \hline
@@ -270,40 +269,39 @@ Analysis & 2020\\
 \end{tabular}
 
 \subsection{Migration}
-Data taking with the current system stops end 2018. Then a migration can be done. Old statistics from the current system should be combined with the new system. And the data stored in the old database should be migrated to the new database. Or the old database could be kept in place and have an interface with the new system. 
+Data taking with the current system stops end 2018. Then a migration can be done. Old statistics from the current system should be combined with the new system. And the data stored in the old database should be migrated to the new database or the old database could be kept in place and have an interface with the new system. 
 
 The offline activities will be going on. A date has to be set to use the new bookkeeping system. It should be carefully prepared which part will be migrated.
 
-Collaborative tools will be used. The bookkeeping system is part of WP 8. WP 8 has once every two weeks a meeting at Tuesday morning at 10.00 AM. Once every two months the $O^2$ technical board meets. 
+\subsection{Organisation}
+The bookkeeping system is part of WP 8. WP 8 has once every two weeks a meeting at Tuesday morning at 10.00 AM. Once every two months the $O^2$ technical board meets. 
 
-An $O^@$ data model for bookkeeping should be available in January 2018.
+An $O^2$ data model for bookkeeping should be available in January 2018.
 
 
 
 \section{Definitions, Acronyms, and Abbreviations}
 
-
-
-
-\subsection{Log Entry}
-A Log Entry is a text message that describe an intervention or an event that happened. It can be generated either by humans (e.g. a shifter enters his/her end-of-shift report) or by machines (e.g. a detector logs some abnormal situation automatically). 
-
-\subsection{Run}
-A Run is a unique ID that identifies a synchronous data processing session in the $O^2$ computing system with a specific and well-defined configuration. It normally ranges from a few minutes to tens of hours. It is generated and managed by the $O^2$ system. 
-
-\subsection{LHC Fill}
-An LHC Fill is a unique ID that identifies a period of activity in the LHC accelerator. It normally ranges from a few minutes to tens of hours. It is generated and managed by the LHC system and published via DIP protocol. 
-
 \subsection{Offline metadata model}
 The offline activities are administered by AliMonitor\footnote{Most information provided in this chapter is gathered during an interview with Costin Grigoras on Tuesday 12 December 2017}. Costin Grigoras is the main developer of this system. The current system is the minimum which is needed for this activity. Figure \ref{fig:offlineWorkflow} shows the workflow off the offline activities. Castor is software to manage tapes on CERN tier 0. For all these files there is an url stored in ALien (e.g. pointers). Shuttle is calibration data stored on EOS. The Lightweight Production Manager (LPM) is software to manage disks on CERN. The LPM decides based on several variables that a run will be reconstructed. CPass means Calibration Pass. 
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.25]{./images/offline_workflow.png}
     \caption{Calibrating and reconstructing the signals}
     \label{fig:offlineWorkflow}
   \end{center}
 \end{figure}
+
+
+\subsubsection{Log Entry}
+A Log Entry is a text message that describe an intervention or an event that happened. It can be generated either by humans (e.g. a shifter enters his/her end-of-shift report) or by machines (e.g. a detector logs some abnormal situation automatically). 
+
+\subsubsection{Run}
+A Run is a unique ID that identifies a synchronous data processing session in the $O^2$ computing system with a specific and well-defined configuration. It normally ranges from a few minutes to tens of hours. It is generated and managed by the $O^2$ system. 
+
+\subsubsection{LHC Fill}
+An LHC Fill is a unique ID that identifies a period of activity in the LHC accelerator. It normally ranges from a few minutes to tens of hours. It is generated and managed by the LHC system and published via DIP protocol. 
 
 \subsubsection{Run entity}
 Run entities are in several forms. There is the period name (an integer and alphanumeric letter). When conditions are simular the period name is kept. This may take weeks. So there are 10 to 15 periods each year. Run change very often. A period name is a short cut for same sort of runs.
@@ -317,7 +315,7 @@ Run entities are in several forms. There is the period name (an integer and alph
 
 In Figure \ref{fig:run_con_table} a screenshot of the run condition table is shown. In here the period name and interaction type can be found. The number of raw data chunks and the total size. Also the AliEn directory where the data is located. The specific detectors which participated in this run and the SHUTTLE-status. At last one can find the number of events in several classes.
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.2]{./images/run_view.jpg}
     \caption{A run view}
@@ -327,7 +325,7 @@ In Figure \ref{fig:run_con_table} a screenshot of the run condition table is sho
 
 
 \begin{figure}
-  \begin{center}
+  \begin{center}[h]
     \includegraphics[scale=0.2]{./images/run_view_mc.jpg}
     \caption{A Monte Carlo run view}
     \label{fig:run_view_mc}
@@ -339,7 +337,7 @@ The coding scheme is human made. In the run view a masterjob ID is shown on the 
 The software version for each period(name) is the same. This is not hard. Software versions don't change during a run. The data self should never be transferred. Always a pointer to a file is used. The configuration data can be transferred. When a masterjob is done then statistics are generated. 
 
 \begin{figure}
-  \begin{center}
+  \begin{center}[h]
     \includegraphics[scale=0.25]{./images/workflow.jpg}
     \caption{}
     \label{fig:}
@@ -358,7 +356,7 @@ The workflow has many steps:
 
 Pass 36 is just a name. 
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.25]{./images/timeline.png}
     \caption{A timeline of a run}
@@ -368,7 +366,6 @@ Pass 36 is just a name.
 
 A timeline such as shown in Figure \ref{fig:timeline} is needed.
 
-\subsection{metadata structures}
 \subsubsection{Production}
 All (master) jobs of a given type are grouped together. They get a unique tag, eg. LHC17g8a\_fast. Here is `17' the year of production, `g' a symbol for Monte Carlo jobs and `8a' a number given by the bookkeeping system. A common description of characteristics of the data and software packages used is:
 \begin{quotation}
@@ -397,7 +394,7 @@ A job is a wrapper around an AliEn masterjob ID. It belongs to a production ID. 
 \end{itemize}
 
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.15]{./images/jdl_example.png}
     \caption{An example of a JDL reconstruction masterjob}
@@ -409,7 +406,7 @@ Figure \ref{fig:jdl_example} shows an example of a reconstruction masterjob writ
 \subsubsection{Subjobs}
 Jobs can be split into subjobs as shown in Figure \ref{fig:splitting_subjobs}.
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.15]{./images/splitting_subjobs}
     \caption{Splitting jobs by AliEn}
@@ -455,18 +452,23 @@ In the JIRA produciton tickes running parameters are discussed. Also are quality
 \subsubsection{AliEn file catalog}
 This is a set of input files as result of a `find` command. It results for instance in a number of OCDB files for a given run. There are 4 billion files in the namespace which amounts to 92 PB of data.
 
-\subsubsection{Conclusion}
 The new system should be linked to the file catalog which itself is outside the scope of the bookkeeping system development. It should be be an intermediate service. Concepts, procedures, work flow, metadata will stay the same.
  
+\subsection{Acronyms} 
+In this section most of the acronyms used in this document are mentioned, explained and presented in Table \ref{tab:acronyms}.
 \begin{table}[h]
 \begin{center}
 \begin{longtable}{ll}
     \hline
     ALICE & A Large Ion Collider Experiment\\
     \hline
+    ADC & \\
+    \hline
     API & Application Programming Interface\\
     \hline
     DAQ & Data Acquisition subsystem \\
+    \hline
+    DPG & Data Preparation Group\\
     \hline
     ID & Identity Document\\
     \hline
@@ -474,7 +476,13 @@ The new system should be linked to the file catalog which itself is outside the 
     \hline
      LHC  & Large Hydron Collider\\
      \hline
+     LPM & Lightweight Process Manager \\
+     \hline
+     MC & Monte Carlo (statistical method)\\
+     \hline
      $O^2$ & Online and Offline\\
+     \hline
+     SAMS & \\
      \hline
     \end{longtable}
       \caption{Acronyms}
@@ -483,10 +491,18 @@ The new system should be linked to the file catalog which itself is outside the 
   
 \end{table}
 
-
-
-
 \section{References}
+The information offered in this SRS originates from several sources. Firstly from interviews done in December 2017 at CERN. Secondly from the ongoing process of requirements engineering started in 2018. Also several documents produced by Vasco Barosso in 2017. Furthermore, several documents produced before have been studied:
+\begin{itemize}
+  \item ALICE $O^2$ Technical Design Report November 30, 2015
+  \item Barroso, Vasco et al, "The ALICE Electronic Logbook," in IEEE-NPSS Real Time Conference, Lisbon, 2010.
+  \item "ALICE Electronic Logbook," ALICE Collaboration, [Online]. Available: https://cern.ch/alice-logbook. [Accessed 01 November 2017].
+  \item Bagnasco, Stefano et al, "Alien: ALICE environment on the GRID," in Computing in High Energy Physics (CHEP), Victoria, Canada., 2007.
+  \item "Alien - ALICE Environment Grid Framework," ALICE Collaboration, [Online]. Available: http://alien.web.cern.ch. [Accessed 01 November 2017].
+  \item Grigoras, Costin et al, "A tool for optimization of the production and user analysis on the Grid," in Computing in High Energy Physics (CHEP), Taipei, 2010. 
+  \item https://alice-o2.web.cern.ch/
+\end{itemize}
+
 
 \section{Overview}
 This document is structured according to the IEEE standard 830-1998 Recommended Practice for Software Requirements Specifications.
