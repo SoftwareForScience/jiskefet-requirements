@@ -165,16 +165,56 @@ Nanomorph
 \subsection{Site adaptation requirements}
 
 \section{Product functions}
+\subsection{GUI}
+\begin{enumerate}
+  \item An idea would be to have different looks\footnote{From: Grazia Luparello}:
+  \begin{itemize}
+    \item shifter look, which can be simple,
+    \item expert look,
+    \item another look.
+  \end{itemize}
+\end{enumerate}
 \subsection{Run Conditions and Statistics}
-The bookkeeping system allows users to view run conditions and statistics either in tabular or detailed view.
+\begin{enumerate}
+  \item The bookkeeping system allows users to view run conditions and statistics either in tabular or detailed view.
+  \item The runtype is also given:
+  \begin{itemize}
+    \item physics run,
+    \item technical run,
+    \item cosmic run.
+  \end{itemize}
+  \item There is no information of data acquisition for a fill. Beamer parameters are missing also:
+  \begin{itemize}
+    \item crossing angle,
+    \item b\'eta star: $\beta^*$,
+    \item position of $xy$ over interaction point.
+  \end{itemize}
+\end{enumerate}
 \subsection{Data Mining}
 The bookkeeping system allows users to view aggregated information (eg. per detector).
 \subsection{Data Export}
 The bookkeeping system allows users to export the data stored in the logbook to several formats (eg. XML, ASCII, EXCEL).
 \subsection{Log Entries and Files}
-The bookkeeping system allows users to view/insert Log Entries with optional file attachment.
+\begin{enumerate}
+  \item The bookkeeping system allows users to view/insert Log Entries with optional file attachment.
+  \item In the current logbook it is not always easy to extract information about the subsystem. To get the needed information it is nowadays sometimes necessary to do things by hand. Exporting data is not always easy because there is no standard export format. A root-file format would come in handy for this.\footnote{From: Robert Helmut Munzer}
+  \item The End Of Shift (EOS) report is often not easily accessible. The shifter types a file in its own way, using his own words, in his own order and sometimes forgetting things. An idea could be to parse this text or the system should ask whether a subsystem should be mentioned. A template for the EOS-report is another idea.\footnote{From: Robert Helmut Munzer}
+  An on call expert should use a template for categories of issues. Such a template could use questions and contain mandatory information. Perhaps based on already available information which is collected on the fly. Uniformity of reports does help a lot to gather information quickly.\footnote{From: Robert Helmut Munzer}
+  \item Follow up or track a specific issue should be in the logbook and not in JIRA as now is the case. The new system should have the functionality to add comments and edit then. But never, never erase anything! 
+  \item The gas log entries are for gas technicians. This is a general service of CERN.\footnote{Roberto Diva}
+    \item there should be log entries for other users.\footnote{Roberto Diva}
+  \item in the logbook there should be 3 or 4 roles.\footnote{Roberto Diva}
+  \item each role, user or specific person should have read, write or administration access.\footnote{Roberto Diva}
+  \item There are some disasters which can be mentioned. One such a disasters is when the platform for the logbook fails. This could mean an EOR. There is a redundant database for all the data. The logbook is always active. When the power is off (during Christmas) the logbook is transferred to CERN 1. \footnote{Roberto Diva}
+  \item An actor often forgotten is Human Resources who have to be able to access the logbook to read whether somebody has worked as reported.\footnote{Roberto Diva}
+
+
+\end{enumerate}
 \subsection{Search and Filtering}
-The bookkeeping system allows users to filter the different data stored in the logbook by several search criteria.
+\begin{enumerate}
+  \item The bookkeeping system allows users to filter the different data stored in the logbook by several search criteria.
+  \item The subsystem co\"ordinator wants to be reported when something is going with his system. He should not have to take action for himself to find out things.\footnote{From: Robert Helmut Munzer}
+\end{enumerate}
 \subsection{Access Control}
 The bookkeeping system uses the CERN Authentication platform to authenticate the users. Therefore, users should use their NICE credentials.
 
@@ -185,92 +225,16 @@ To logout from the bookkeeping system, users should click on the "Logout" button
 \section{User Characteristics}
 The bookkeeping systems will have several different users. An overall distinction can be made between users who create input and users who only read data. Another distinction can be made between human and machine users. \footnote{In the week of 11 December Marten Teitsma and Heiko van der Heijden interviewed several people at CERN. A summary of these interviews is given in this section}
 
-
-
 \subsection{User}
 A user is someone who uses the system for general purpose.
 
+\subsection{Operation room crew}
+When ALICE is active there are five persons in the operater room. The run manager stays for two weeks and is 24/7 in the operator room. The crew of four consists of a shift leader, who is coordinator of the crew and three shifters, i.e. a DAQ-shifter, a DCS-shifter and a DQM-shifter. A shift takes eight hours and is done within six days. Each shifter takes two morning shifts, two evening shifts and two night shifts. Some shifters do take only one shift sequence of six days. Shifters have various degrees of experience. Shifters only need the most recent information. 
 
-\subsection{Shifter}
+\subsubsection{Shifter}
 A shifter is a person who operates a part of ALICE. One of the subsystems his or her responsibility. A shifter takes on a shift of 8 hours which can be in daytime or nighttime. A shifter is an employee of collaborating member of ALICE. Level of education varies but is most of the time Master or PhD in Physics.
 
-\subsection{Run coordinator}
-The run coordinator is, together with the deputy run coordinator responsible for the operation of ALICE.\footnote{Information provided for in this Section is gathered during an interview with Gracia who was run coordinator in 2017. In 2018 Kristian Gulbrandsen will be run coordinator.} A run coordinator has a full overview of what to do for a whole year. The input for the activities is given by the Physics Board. So they determine which parts of the machine are activated, how the triggers work and what the DAQ should do. They know what is working and what not and take action when things are not in line with the plan. Recurrent problems are seen into. 
-
-When ALICE is active there are five persons in the operater room. The run manager stays for two weeks and is 24/7 in the operator room. The crew of four consists of a shift leader, who is co\"ordinator of the crew and three shifters, i.e. a DAQ-shifter, a DCS-shifter and a DQM-shifter. A shift takes eight hours and is done within six days. Each shifter takes two morning shifts, two evening shifts and two night shifts. Some shifters do take only one shift sequence of six days. Shifters have various degrees of experience. Shifters only need the most recent information. 
-
-The current electronic logbook provides all the information needed by the run co\"ordinator. It gives
-\begin{itemize}
-  \item real-time information, 
-  \item summaries (plots), which could be a bit flexible,
-  \item data taking efficiency in relation to time needed,
-  \item selected fills,
-  \item average,
-  \item other statistical information
-\end{itemize}
- 
-The run co\"ordinator does not use MonAlisa. The shift leader marks runs as good or bad. When detectors do their job a run will be declared as good. The runtype is also given:
-\begin{itemize}
-  \item physics run,
-  \item technical run,
-  \item cosmic run.
-\end{itemize}
-The automatic notification done by the subsystems is a good thing. For the End of Shift (EOS) a template for the report would come in handy. An auto-save should be implemented because sometimes a log entry gets lost because of authentication problems, e.g. a screen is open for too long. And sometimes more or less important information is not mentioned because a shifter has forgotten about it.
-
-There is no information of data acquisition for a fill. Beamer parameters are missing also:
-\begin{itemize}
-  \item crossing angle,
-  \item b\'eta star: $\beta^*$,
-  \item position of $xy$ over interaction point.
-\end{itemize}
-
-An idea would be to have different looks:
-\begin{itemize}
-  \item shifter look, which can be simple,
-  \item expert look,
-  \item another look.
-\end{itemize}
-
-
-
-
-
-\subsection{Subsystem run coordinator}
-A subsystem co\"ordinator is responsible for a detetector or subsystem of ALICE. Information provided for in this Section is gathered during an interview with Robert who is subsystem co\"ordinator of TPC or SRC. A subsystem co\"ordinator needs to have data about this system when called on. All info needed is provided for in the current log system. The fill or run info, i.e. configuration parameters, relates to issues. This info is related to log entries. It is possible now to look into it over a long period.
-
-In the current logbook it is not always easy to extract information about the subsystem. To get the needed information it is nowadays sometimes necessary to do things by hand. Exporting data is not always easy because there is no standard export format. A root-file format would come in handy for this.
-
-The End Of Shift (EOS) report is often not easily accessible. The shifter types a file in its own way, using his own words, in his own order and sometimes forgetting things. An idea could be to parse this text or the system should ask whether a subsystem should be mentioned. A template for the EOS-report is another idea.
-
-The subsystem co\"ordinator wants to be reported when something is going with his system. He should not have to take action for himself to find out things.
-
-An on call expert should use a template for categories of issues. Such a template could use questions and contain mandatory information. Perhaps based on already available information which is collected on the fly. Uniformity of reports does help a lot to gather information quickly.
-
-There is in this area a small line between monitoring and bookkeeping. A difference can be found based on interaction or luminosity rate. Currently specific subsystem data is not stored in the bookkeeping system. It is stored in the DCS.
-
-
-
-\subsection{DAQ Run coordinator}
-Information provided for in this Section is gathered during an interview with Roberto Divia who is DAQ run co\"ordinator. The subsystem run co\'ordinator gives quality flags. The subsystem run co\"ordinator meets weekly with the run co\"ordinator and other subsystem run co\"ordinators. Then is feedback given on the operational quality. Recurrent problems and the planning are discussed.
-
-There is no correction from offline to online. The Data Quality Monitor (DQM) will become Quality Control and shall be a very small part of $O^2$. In $O^2$ there is only one way: from synchronous to asynchronous. From the High Level Trigger (HLT) the data goes offline. The HLT throws away 99\% of the data. The HLT is a subsystem which will become a shifters task. There will be counters concerning HLT. HLT creates data and less metadata. 
-
-The DAQ creates metadata, just as other subsystems. This metadata has to be stored in the bookkeeping system. The electronic logbook is used to describe a run. Problems and human errors are logged. These log entries are post mortem used to find out what happened. The shifter, technician and subsystems themselves are creating this data. On callers also interact with the logbook. The logbook is the basic channel of communication.
-
-In training the shifter learn that when in doubt a log entry should be made. The EOS-report is an interaction with the (subsystem) run co\"ordinator. A template should be enforced. 
-
-Roberto is often called upon to currate End or Run (EOR) reasons, reasons to end the run and thus stop ALICE. He looks for reasons in the electronic logbook. In 99\% of the EORs he succeeds in finding the reason. EOR reasons are given at first by subsystems. Like a stone in a river it is hard to find the wave which causes the other waves. Roberto uses log files, created by the subsystems, to find the reasons. When an error occurs outside a run then it is not shown in the logbook but can be of interest when looking for EOR reasons. 
-
-Follow up or track a specific issue should be in the logbook and not in JIRA as now is the case. The new system should have the functionality to add comments and edit then. But never, never erase anything!
-
-The gas log entries are for gas technicians. This is a general service of CERN.
-
-Some remarks:
-\begin{itemize}
-  \item there should be log entries for other users,
-  \item in the logbook there should be 3 or 4 roles,
-  \item each role, user or specific person should have read, write or administration access.
-\end{itemize}
+In training the shifter learns that when in doubt a log entry should be made. The EOS-report is an interaction with the (subsystem) run coordinator. A template should be enforced. 
 
 Shifters are using Shift Accounting Managing System (SAMS). Shifters should be restricted in their rights. 
 
@@ -284,25 +248,49 @@ Shifters do have problems with the electronic logbook:
 
 The worst people are those who come for six days and then leave. When shifters are not doing their job the right way, they can be reported and loose their credits. This does not happen often, just once or twice since 2009. But of course people make mistakes. There are day by day summary reports. The LHC reports daily. The PARs are reported each week. Shifters have to be able to fill in their report one day (24 hrs) after the end of shift.
 
-There are some disasters which can be mentioned. One such a disasters is when the platform for the logbook fails. This could mean an EOR. There is a redundant database for all the data. The logbook is always active. When the power is off (during Christmas) the logbook is transferred to CERN 1. 
+\subsubsection{Shift leader}
+The shift leader marks runs as good or bad. When detectors do their job a run will be declared as good. 
 
-An actor often forgotten is Human Resources who have to be able to access the logbook to read whether somebody has worked as reported.
+\subsubsection{Run manager}
+
+\subsection{Run coordinator}
+The run coordinator is, together with the deputy run coordinator responsible for the operation of ALICE.\footnote{Information provided for in this Section is gathered during an interview with Gracia who was run coordinator in 2017. In 2018 Kristian Gulbrandsen will be run coordinator.} A run coordinator has a full overview of what to do for a whole year. The input for the activities is given by the Physics Board. So they determine which parts of the machine are activated, how the triggers work and what the DAQ should do. They know what is working and what not and take action when things are not in line with the plan. Recurrent problems are seen into. 
+
+The current electronic logbook provides all the information needed by the run co\"ordinator. It gives
+\begin{itemize}
+  \item real-time information, 
+  \item summaries (plots), which could be a bit flexible,
+  \item data taking efficiency in relation to time needed,
+  \item selected fills,
+  \item average,
+  \item other statistical information
+\end{itemize}
+ 
+The run coordinator does not use MonAlisa. The automatic notification done by the subsystems is a good thing. For the End of Shift (EOS) a template for the report would come in handy. An auto-save should be implemented because sometimes a log entry gets lost because of authentication problems, e.g. a screen is open for too long. And sometimes more or less important information is not mentioned because a shifter has forgotten about it.
+
+\subsection{Subsystem Run Coordinator}
+A Subsystem Run Coordinator (SRC) is responsible for a detetector or subsystem of ALICE.\footnote{Information provided for in this Section is gathered during an interview with Robert who is subsystem coordinator of TPC.} A SRC needs to have data about this system when called on. All info needed is provided for in the current log system. The fill or run info, i.e. configuration parameters, relates to issues. This info is related to log entries. It is possible now to look into it over a long period.
+
+There is in this area a small line between monitoring and bookkeeping. A difference can be found based on interaction or luminosity rate. Currently specific subsystem data is not stored in the bookkeeping system. It is stored in the DCS.
+
+\subsection{DAQ Run coordinator}
+\footnote{Information provided for in this Section is gathered during an interview with Roberto Divia who is DAQ run coordinator.}The subsystem run coordinator gives quality flags. The subsystem run co\"ordinator meets weekly with the run coordinator and other subsystem run coordinators. Then is feedback given on the operational quality. Recurrent problems and the planning are discussed.
+
+There is no correction from offline to online. The Data Quality Monitor (DQM) will become Quality Control and shall be a very small part of $O^2$. In $O^2$ there is only one way: from synchronous to asynchronous. From the High Level Trigger (HLT) the data goes offline. The HLT throws away 99\% of the data. The HLT is a subsystem which will become a shifters task. There will be counters concerning HLT. HLT creates data and less metadata. 
+
+The DAQ creates metadata, just as other subsystems. This metadata has to be stored in the bookkeeping system. The electronic logbook is used to describe a run. Problems and human errors are logged. These log entries are post mortem used to find out what happened. The shifter, technician and subsystems themselves are creating this data. On callers also interact with the logbook. The logbook is the basic channel of communication.
 
 
-
-
-
-
-
+Roberto is often called upon to currate End or Run (EOR) reasons, reasons to end the run and thus stop ALICE. He looks for reasons in the electronic logbook. In 99\% of the EORs he succeeds in finding the reason. EOR reasons are given at first by subsystems. Like a stone in a river it is hard to find the wave which causes the other waves. Roberto uses log files, created by the subsystems, to find the reasons. When an error occurs outside a run then it is not shown in the logbook but can be of interest when looking for EOR reasons. 
 
 \subsection{Subsystem team member}
 
-
+\subsection{On call expert}
 
 \subsection{Physics board}
-The Physics board meets regularly to discuss the experiment and what to do next. Information provided for in this Section is gathered during an interview with Marco van Leeuwen who is co\"ordinator of Physics Board. The board oversees and coaches the data analysis. The actual analysis is done by PhD-students and postdocs. The board is meeting once a week to discuss resource management and exchange information. The resource management concerns MC-analysis and data reconstruction. 
+The Physics board meets regularly to discuss the experiment and what to do next.\footnote{Information provided for in this Section is gathered during an interview with Marco van Leeuwen who is coordinator of Physics Board.} The board oversees and coaches the data analysis. The actual analysis is done by PhD-students and postdocs. The board is meeting once a week to discuss resource management and exchange information. The resource management concerns MC-analysis and data reconstruction. 
 
-The perspective of the data annalist is focused on the specific files he needs for his analysis, e.g. ` which file should I take when I want 13 TeV. There are several categories to discern:
+The perspective of the data analist is focused on the specific files he needs for his analysis, e.g. ` which file should I take when I want 13 TeV. There are several categories to discern:
 \begin{itemize}
   \item energy levels
   \item collisions (Pb-Pb, p-p, Pb-p and some other variants)
@@ -313,7 +301,7 @@ Questions such as `how many events are detected when a specific detector is work
 
 Concerning the Monte Carlo simulations the same set of information is needed. MC-simulations are, most often, anchored to a run or period with a specific detector configuration. These simulations can amount to 10 or even 100 simulations for each run configuration. These simulations must be searchable. This event generator creates a lot of collisions which can be of interest. An analysts seeks for photons, jets, strange particles etc.
 
-For a follow-up for the logbook JIRA is used. JIRA is also used for MC-simulations. TWiki is used by the ALICE DPG. In TWiki users make their own lay-out. 
+For a follow-up on the logbook JIRA is used. JIRA is also used for MC-simulations. TWiki is used by the ALICE DPG. In TWiki users make their own lay-out. 
 
 The perspective of the Physics Board is concerned with planning and resource management. How to organise the analysis, i.e. data reconstruction and MC-simulation. There is a top-down approach. Reconstruction is driven by the time of production. Simulation is done on demand, which is possible because the demand is not that big. The Physics Board has several needs or questions:
 \begin{itemize}
