@@ -36,6 +36,10 @@ The choice of database is not limited to the two mentioned. Given the highly rel
 \subsection{Communications interfaces}
 No special communication protocol is needed.
 
+The bookkeeping system should use a REST API. 
+
+A message queue is needed to decouple the execution of the $O^2$ workflows from any failure in the $O^2$ bookkeeping backend.
+
 \subsection{Memory}
 The bookkeeping system has no special requirements concerning use of memory.
 
