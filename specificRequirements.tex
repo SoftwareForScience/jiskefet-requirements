@@ -1,10 +1,22 @@
 
 \chapter{Specific Requirements}
 \section{External Interfaces}
+\subsection{Log entries}
+\begin{enumerate}
+  \item In the current logbook it is not always easy to extract information about the subsystem. To get the needed information it is nowadays sometimes necessary to do things by hand. Exporting data is not always easy because there is no standard export format. A root-file format would come in handy for this.\footnote{From: Robert Helmut Munzer}
+  \item The End Of Shift (EOS) report is often not easily accessible. The shifter types a file in its own way, using his own words, in his own order and sometimes forgetting things. An idea could be to parse this text or the system should ask whether a subsystem should be mentioned. A template for the EOS-report is another idea.\footnote{From: Robert Helmut Munzer}
+  An on call expert should use a template for categories of issues. Such a template could use questions and contain mandatory information. Perhaps based on already available information which is collected on the fly. Uniformity of reports does help a lot to gather information quickly.\footnote{From: Robert Helmut Munzer}
+  \item Follow up or track a specific issue should be in the logbook and not in JIRA as now is the case. The new system should have the functionality to add comments and edit then. But never, never erase anything! 
+  \item The gas log entries are for gas technicians. This is a general service of CERN.\footnote{Roberto Diva}
+    \item there should be log entries for other users.\footnote{Roberto Diva}
+  \item in the logbook there should be 3 or 4 roles.\footnote{Roberto Diva}
+  \item each role, user or specific person should have read, write or administration access.\footnote{Roberto Diva}
+\end{enumerate}
+
 \subsection{Data Description}
 A log entry should be related to several other data entries.
 \begin{enumerate}
-  \item The runtype is also given:
+  \item The run type is also given:
   \begin{itemize}
     \item physics run,
     \item technical run,
@@ -18,131 +30,7 @@ A log entry should be related to several other data entries.
   \end{itemize}
 \end{enumerate}
 
-\section{Functional requirements}
 
-\subsection{Log entries}
-\begin{enumerate}
-  \item In the current logbook it is not always easy to extract information about the subsystem. To get the needed information it is nowadays sometimes necessary to do things by hand. Exporting data is not always easy because there is no standard export format. A root-file format would come in handy for this.\footnote{From: Robert Helmut Munzer}
-  \item The End Of Shift (EOS) report is often not easily accessible. The shifter types a file in its own way, using his own words, in his own order and sometimes forgetting things. An idea could be to parse this text or the system should ask whether a subsystem should be mentioned. A template for the EOS-report is another idea.\footnote{From: Robert Helmut Munzer}
-  An on call expert should use a template for categories of issues. Such a template could use questions and contain mandatory information. Perhaps based on already available information which is collected on the fly. Uniformity of reports does help a lot to gather information quickly.\footnote{From: Robert Helmut Munzer}
-  \item Follow up or track a specific issue should be in the logbook and not in JIRA as now is the case. The new system should have the functionality to add comments and edit then. But never, never erase anything! 
-  \item The gas log entries are for gas technicians. This is a general service of CERN.\footnote{Roberto Diva}
-    \item there should be log entries for other users.\footnote{Roberto Diva}
-  \item in the logbook there should be 3 or 4 roles.\footnote{Roberto Diva}
-  \item each role, user or specific person should have read, write or administration access.\footnote{Roberto Diva}
- 
-\end{enumerate}
-
-
-\subsection{Operational teams}
-\begin{itemize}
-  \item Run Coordination
-  \item Technical Coordination
-  \item Detector experts
-  \item O2 experts
-  \item Trigger
-\end{itemize}
-
-\subsection{Physics community}
-
-\subsection{ALICE management}
-
-\subsection{Users of the system}
-Two types of users of the system can be discerned:
-\begin{itemize}
-  \item humans, or shifters which are people doing a shift in the control room of ALICE.
-  \item people who are on call for specific interventions
-  \item system administrators, people who administrate the log system
-  \item other systems, these are subsystems of the detector giving notice of specific events. The systems are:
-  \begin{itemize}
-    \item ACORDE
-    \item AD
-    \item BCM
-    \item BPTX
-    \item CPV
-    \item CTP
-    \item DAQ
-    \item DAQ\_TEST
-    \item Data Processing
-    \item Central DCS
-    \item DQM/QA
-    \item EMCal
-    \item FMD
-    \item Gas
-    \item General
-    \item HLT
-    \item HMPID
-    \item LHC Interface
-    \item Magnets
-    \item MUON\_TRG
-    \item MUON\_TRK
-    \item Offline
-    \item On Cal Interventions
-    \item P2 Info
-    \item PHOS
-    \item PMD
-    \item Run Coordination
-    \item Safety
-    \item SDD
-    \item SPD
-    \item SSD
-    \item TO
-    \item Technical Coordination
-    \item TOF
-    \item TPC
-    \item TPC Upgrade
-    \item TRD
-    \item Trigger
-    \item VO
-    \item ZDC
-  \end{itemize}
-\end{itemize}
-
-A user (shifter or system) makes an entry into the database consisting of several items. Each entry records the following items:
-\begin{itemize}
-  \item time of creation
-  \item which subsystem creates the entry
-  \item which class the creator originates:
-  \begin{itemize}
-    \item human
-    \item process
-  \end{itemize}
-  \item type of entry
-  \begin{itemize}
-    \item general
-    \item EOS
-    \item DCS
-  \end{itemize}
-  \item number of run
-  \item author of the entry (when the author is a human)
-  \item title of the entry
-  \item log entry
-  \item follow ups
-  \item files
-  \item actions
-\end{itemize}
-
-A person who is called for a specific intervention makes an entry into the log system consisting of the following items:
-\begin{itemize}
-  \item time of creation
-  \item author
-  \item type of intervention:
-  \begin{itemize}
-    \item remote
-    \item onsite
-  \end{itemize}
-  \item title of entry
-  \item log entry
-\end{itemize}
-
-System administrators can create an announcement. This announcement consists of the following items:
-\begin{itemize}
-  \item time of creation
-  \item validity, duration of interruption of the system
-  \item author
-  \item title of the entry
-  \item log entry
-\end{itemize}
 
 The table, in the database, which records several items concerning a run consists of the following items:
 \begin{itemize}
@@ -199,6 +87,69 @@ The table, in the database, which records several items concerning a run consist
 \end{itemize}
 Not found in table but shown in application: run number, 
 
+
+\section{Functional requirements}
+
+\subsection{Operational teams}
+\begin{itemize}
+  \item Run Coordination
+  \item Technical Coordination
+  \item Detector experts
+  \item O2 experts
+  \item Trigger
+\end{itemize}
+
+\subsection{Physics community}
+
+\subsection{ALICE management}
+
+\subsection{Subsystem actors}
+ALICE consists of several subsystems. All these systems are able to create a log entry. The systems are:
+  \begin{itemize}
+    \item ACORDE
+    \item AD
+    \item BCM
+    \item BPTX
+    \item CPV
+    \item CTP
+    \item DAQ
+    \item DAQ\_TEST
+    \item Data Processing
+    \item Central DCS
+    \item DQM/QA
+    \item EMCal
+    \item FMD
+    \item Gas
+    \item General
+    \item HLT
+    \item HMPID
+    \item LHC Interface
+    \item Magnets
+    \item MUON\_TRG
+    \item MUON\_TRK
+    \item Offline
+    \item On Call Interventions
+    \item P2 Info
+    \item PHOS
+    \item PMD
+    \item Run Coordination
+    \item Safety
+    \item SDD
+    \item SPD
+    \item SSD
+    \item TO
+    \item Technical Coordination
+    \item TOF
+    \item TPC
+    \item TPC Upgrade
+    \item TRD
+    \item Trigger
+    \item VO
+    \item ZDC
+  \end{itemize}
+
+
+
 \subsection{User stories}
 \subsection{User}
 \begin{enumerate}
@@ -221,11 +172,33 @@ Not found in table but shown in application: run number,
 \item As ALICE collaborator I need APIs to retrieve specific fields in the Logbook using selection criterias I provide. This access must be restricted, probably API by API or by fields being accessed, and protected against intentional or unintentional DoS attacks (Roberto Divia).
 \item As ALICE collaborator I need to be able to access the Logbook on a run-per-run summary view (possibly using a selection criteria I specify) and on a log entry by log entry view (possibly using a selection criteria I specify) (Roberto Divia).
 \item As ALICE collaborator I need to check the details of any run: EOR reason, statistics, log entries (Roberto Divia).
-
-  \item 
 \end{enumerate}
 
 \subsection{Shifter}
+A user (shifter or system) makes an entry into the database consisting of several items. Each entry records the following items:
+\begin{itemize}
+  \item time of creation
+  \item which subsystem creates the entry
+  \item which class the creator originates:
+  \begin{itemize}
+    \item human
+    \item process
+  \end{itemize}
+  \item type of entry
+  \begin{itemize}
+    \item general
+    \item EOS
+    \item DCS
+  \end{itemize}
+  \item number of run
+  \item author of the entry (when the author is a human)
+  \item title of the entry
+  \item log entry
+  \item follow ups
+  \item files
+  \item actions
+\end{itemize}
+
 Currently this shifter is looking at ECS/DAQ-, CTP- or HLT-subsystem. 
 \begin{enumerate}
   \item As a shifter, I want to have templates that prefill most of my end-of-shift reports from the available metadata so that I don’t need to fill in myself what the system already knows (Vasco).
@@ -293,6 +266,21 @@ analysis than txt files, e.g. root-files to be able to do specific statistical a
 
 \end{enumerate}
 
+\subsection{On Call expert}
+A person who is called for a specific intervention makes an entry into the log system consisting of the following items:
+\begin{itemize}
+  \item time of creation
+  \item author
+  \item type of intervention:
+  \begin{itemize}
+    \item remote
+    \item onsite
+  \end{itemize}
+  \item title of entry
+  \item log entry
+\end{itemize}
+
+
 \subsection{System team member}
 \begin{enumerate}
   \item As system team member I have to create log entries concerning any system (alone or in combination) (Roberto Divia).
@@ -313,6 +301,15 @@ analysis than txt files, e.g. root-files to be able to do specific statistical a
 \end{enumerate}
 
 \subsection{Administrator}
+System administrators can create an announcement. This announcement consists of the following items:
+\begin{itemize}
+  \item time of creation
+  \item validity, duration of interruption of the system
+  \item author
+  \item title of the entry
+  \item log entry
+\end{itemize}
+
 \begin{enumerate}
   \item As an administrator, I want to have a dashboard that gives me log-entry related analytics so that I follow the evolution of the repository (Vasco). 
   \item As Administrator I need to be able to update the logbook information for what concerns the bookkeeping system and other systems, in particular the run quality flag and the EOR reason(s). The question arises if subsystem run co\"ordinators can update information associated to other systems (e.g. EOR reasons) as it is the case today (Roberto Divia).
@@ -571,11 +568,3 @@ Support crews should be able to independently diagnosis and either restore the s
 
 \section{Connectivity}
 The system should be able to function correctly without an internet connection.
-
-\section{Usability}
-
-\section{Efficiency}
-\section{Reliability}
-\section{Portability and Scalability}
-\section{System Models}
-\section{Use Case: Error Handling}
