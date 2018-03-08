@@ -2,7 +2,36 @@
 \chapter{Specific Requirements}
 \section{External Interfaces}
 \subsection{Data Description}
+A log entry should be related to several other data entries.
+\begin{enumerate}
+  \item The runtype is also given:
+  \begin{itemize}
+    \item physics run,
+    \item technical run,
+    \item cosmic run.
+  \end{itemize}
+  \item There is no information of data acquisition for a fill. Beamer parameters are missing also:
+  \begin{itemize}
+    \item crossing angle,
+    \item b\'eta star: $\beta^*$,
+    \item position of $xy$ over interaction point.
+  \end{itemize}
+\end{enumerate}
+
 \section{Functional requirements}
+
+\subsection{Log entries}
+\begin{enumerate}
+  \item In the current logbook it is not always easy to extract information about the subsystem. To get the needed information it is nowadays sometimes necessary to do things by hand. Exporting data is not always easy because there is no standard export format. A root-file format would come in handy for this.\footnote{From: Robert Helmut Munzer}
+  \item The End Of Shift (EOS) report is often not easily accessible. The shifter types a file in its own way, using his own words, in his own order and sometimes forgetting things. An idea could be to parse this text or the system should ask whether a subsystem should be mentioned. A template for the EOS-report is another idea.\footnote{From: Robert Helmut Munzer}
+  An on call expert should use a template for categories of issues. Such a template could use questions and contain mandatory information. Perhaps based on already available information which is collected on the fly. Uniformity of reports does help a lot to gather information quickly.\footnote{From: Robert Helmut Munzer}
+  \item Follow up or track a specific issue should be in the logbook and not in JIRA as now is the case. The new system should have the functionality to add comments and edit then. But never, never erase anything! 
+  \item The gas log entries are for gas technicians. This is a general service of CERN.\footnote{Roberto Diva}
+    \item there should be log entries for other users.\footnote{Roberto Diva}
+  \item in the logbook there should be 3 or 4 roles.\footnote{Roberto Diva}
+  \item each role, user or specific person should have read, write or administration access.\footnote{Roberto Diva}
+ 
+\end{enumerate}
 
 
 \subsection{Operational teams}
@@ -260,6 +289,7 @@ analysis than txt files, e.g. root-files to be able to do specific statistical a
   \item As subsystem run co\"ordinator I may have to cross-reference log entries (e.g. by URL, by unique Reference ID, or by run number)  (Roberto Divia).
   \item  As subsystem run co\"ordinator I may need to attach files to log entries. These files may contain text or binary information (PNGs, JPGs etc...) (Roberto Divia).
   \item As subsystem run co\"ordinator I may need to cross reference log entries or other logbook fields (e.g. run numbers, fill numbers etc...) with whatever issue tracking system will be used by the ALICE collaboration (today: Jira). This association may also be done automatically by daemons (e.g. what is done today for EOR reasons and Jira tickets) (Roberto Divia).
+  \item The subsystem co\"ordinator wants to be reported when something is going with his system. He should not have to take action for himself to find out things (Robert Helmut Munzer).
 
 \end{enumerate}
 
@@ -468,6 +498,8 @@ Given the criticality of the accounting data, the repositories should run in hig
   \item Repository is critical
   \item Database should be highly available
 \end{itemize}
+
+There are some disasters which can be mentioned. One such a disasters is when the platform for the logbook fails. This could mean an EOR. There is a redundant database for all the data. The logbook is always active. When the power is off (during Christmas) the logbook is transferred to CERN 1. \footnote{Roberto Diva}
 
 
 \section{Backup}
