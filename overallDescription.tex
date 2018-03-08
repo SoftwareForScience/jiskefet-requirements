@@ -1,4 +1,5 @@
 \chapter{Overall Description}
+
 \section{Product perspective}
 
 \subsection{System interfaces}
@@ -7,6 +8,7 @@ The interfaces of the bookkeeping system with the rest of the world are:
   \item a GUI, for several users the system offers different GUIs
   \item API, the system offers several APIs to work with
 \end{itemize}
+
 \subsection{User interfaces}
 The bookkeeping system offers users interfaces for several users:
 \begin{itemize}
@@ -22,6 +24,14 @@ The bookkeeping system has no specific hardware needs above the normal hardware 
 
 \subsection{Software interfaces}
 The bookkeeping system interacts with several systems already in place or to be developed in the future. For this interaction the bookkeeping system should have facilities such as APIs.
+
+\subsubsection{Database}
+The choice of database is not yet made. Currently two databases are in use:
+\begin{itemize}
+  \item PostgreSQL
+  \item MySQL
+\end{itemize}
+The choice of database is not limited to the two mentioned. Given the highly relational nature of the date the development team will probably propose a relational database.
 
 \subsection{Communications interfaces}
 No special communication protocol is needed.
