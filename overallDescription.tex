@@ -2,15 +2,38 @@
 \section{Product perspective}
 
 \subsection{System interfaces}
+The interfaces of the bookkeeping system with the rest of the world are:
+\begin{itemize}
+  \item a GUI, for several users the system offers different GUIs
+  \item API, the system offers several APIs to work with
+\end{itemize}
 \subsection{User interfaces}
-\subsection{Hardware interfaces}
-\subsection{Software interfaces}
+The bookkeeping system offers users interfaces for several users:
+\begin{itemize}
+  \item shifters
+  \item physicists
+  \item (subsystem) run coordinators
+  \item etc.
+\end{itemize}
+For all these users the user interface will be different due to their specific needs.
 
+\subsection{Hardware interfaces}
+The bookkeeping system has no specific hardware needs above the normal hardware requirements for an administrative system.
+
+\subsection{Software interfaces}
+The bookkeeping system interacts with several systems already in place or to be developed in the future. For this interaction the bookkeeping system should have facilities such as APIs.
 
 \subsection{Communications interfaces}
+No special communication protocol is needed.
+
 \subsection{Memory}
+The bookkeeping system has no special requirements concerning use of memory.
+
 \subsection{Operations}
+Each user has its own specific operation for which he or she uses the system. A shifter uses it to create log entries, a member of the DPG uses it to flag runs on their quality, etc.
+
 \subsection{Site adaptation requirements}
+The bookkeeping system will be used on one particular site, i.e. Point 2 where ALICE is located.
 
 \section{Product functions}
 \subsection{GUI}
