@@ -95,6 +95,7 @@ The worst people are those who come for six days and then leave. When shifters a
 The shift leader marks runs as good or bad. When detectors do their job a run will be declared as good. 
 
 \subsubsection{Run manager}
+A run manager is in the operator room at Point 2 for two weeks 24 hours a day.
 
 \subsection{Run coordinator}
 The run coordinator is, together with the deputy run coordinator responsible for the operation of ALICE.\footnote{Information provided for in this Section is gathered during an interview with Gracia who was run coordinator in 2017. In 2018 Kristian Gulbrandsen will be run coordinator.} A run coordinator has a full overview of what to do for a whole year. The input for the activities is given by the Physics Board. So they determine which parts of the machine are activated, how the triggers work and what the DAQ should do. They know what is working and what not and take action when things are not in line with the plan. Recurrent problems are seen into. 
@@ -127,8 +128,10 @@ The DAQ creates metadata, just as other subsystems. This metadata has to be stor
 Roberto is often called upon to currate End or Run (EOR) reasons, reasons to end the run and thus stop ALICE. He looks for reasons in the electronic logbook. In 99\% of the EORs he succeeds in finding the reason. EOR reasons are given at first by subsystems. Like a stone in a river it is hard to find the wave which causes the other waves. Roberto uses log files, created by the subsystems, to find the reasons. When an error occurs outside a run then it is not shown in the logbook but can be of interest when looking for EOR reasons. 
 
 \subsection{Subsystem team member}
+Each subsystem is being managed by a team of specialists. 
 
 \subsection{On call expert}
+When ALICE is active, always an expert for a subsystem is available. This expert can be called when the people in the operator room are not able to solve a specific problem.
 
 \subsection{Physics board}
 The Physics board meets regularly to discuss the experiment and what to do next.\footnote{Information provided for in this Section is gathered during an interview with Marco van Leeuwen who is coordinator of Physics Board.} The board oversees and coaches the data analysis. The actual analysis is done by PhD-students and postdocs. The board is meeting once a week to discuss resource management and exchange information. The resource management concerns MC-analysis and data reconstruction. 
@@ -166,25 +169,23 @@ There are two views from the Physics Board:
 \end{itemize}
 The is a need for reports on resource usage. This is a management view.
 
-
-
-
-
-
 \subsection{CERN administration officer}
 An actor often forgotten is Human Resources who have to be able to access the logbook to read whether somebody has worked as reported.\footnote{Roberto Diva}
 
-
-
 \subsection{DPG}
+The Data Preparation Group does the calibration and reconstruction of data.
 
 \subsection{DPG-QA}
+The Data Preparation Group Quality Assurance determines whether the data is of good quality or not.
 
 \subsection{Developer}
+The developer is a member of the team which develops the system. 
 
 \subsection{Administrator}
-
-
+The administrator is the person who configures the system.
 
 \section{Assumptions and Dependencies}
+The bookkeeping system runs on a Linux OS, i.e. CentOS version 7.0
+
 \section{Apportioning of Requirements}
+The offline part of the bookkeeping system, i.e. the function currently is done by AliMonitor, has a lower priority than the logging functionality.
