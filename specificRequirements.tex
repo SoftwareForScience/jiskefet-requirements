@@ -295,8 +295,8 @@ analysis than txt files, e.g. root-files to be able to do specific statistical a
 
 \subsection{System team member}
 \begin{enumerate}
-  \item As system team member I have to create log entries concerning any system (alone or in combination) (Roberto Divia).
-  \item As run co\"ordinator I may have to cross-reference log entries (e.g. by URL, by unique Reference ID, or by run number)  (Roberto Divia).
+  \item As system team member I have to create log entries concerning the system I am responsible for (alone or in combination) (Roberto Divia).
+  \item As system team member I may have to cross-reference log entries (e.g. by URL, by unique Reference ID, or by run number)  (Roberto Divia).
   \item  As system team member I may need to attach files to log entries. These files may contain text or binary information (PNGs, JPGs etc...) (Roberto Divia).
   \item As system team member I may need to cross reference log entries or other logbook fields (e.g. run numbers, fill numbers etc...) with whatever issue tracking system will be used by the ALICE collaboration (today: Jira). This association may also be done automatically by daemons (e.g. what is done today for EOR reasons and Jira tickets) (Roberto Divia).
 \end{enumerate}
@@ -313,16 +313,15 @@ analysis than txt files, e.g. root-files to be able to do specific statistical a
 \end{enumerate}
 
 \subsection{Administrator}
-System administrators can create an announcement. This announcement consists of the following items:
-\begin{itemize}
-  \item time of creation
-  \item validity, duration of interruption of the system
-  \item author
-  \item title of the entry
-  \item log entry
-\end{itemize}
-
 \begin{enumerate}
+  \item System administrators can create an announcement. This announcement consists of the following items:
+  \begin{itemize}
+    \item time of creation
+    \item validity, duration of interruption of the system
+    \item author
+    \item title of the entry
+    \item log entry
+  \end{itemize}
   \item As an administrator, I want to have a dashboard that gives me log-entry related analytics so that I follow the evolution of the repository (Vasco). 
   \item As Administrator I need to be able to update the logbook information for what concerns the bookkeeping system and other systems, in particular the run quality flag and the EOR reason(s). The question arises if subsystem run co\"ordinators can update information associated to other systems (e.g. EOR reasons) as it is the case today (Roberto Divia).
   \item As administrator I must be able to move collaborators to and out of subsystem teams. These action may be conflict the information stored in SAMS (Roberto Divia).
@@ -330,7 +329,7 @@ System administrators can create an announcement. This announcement consists of 
   \item Only administrator may be given the possibility to remove log entries (and I am not even sure about this) (Roberto Divia).
 \item As administrator I must be able to trigger the migration of the whole system (server, databases etc...) to alternate sites to cover scenarios such as HW failures or long power interruptions (e.g. Xmas shutdown). This migration should be as automatic as possible, particularly for the 1st example above (hot stand-by?) (Roberto Divia).
   \item As administrator I may request to replicate either selected portions or all of the Logbook data to external sites and to provide adequate access tools to it (to facilitate read-only accesses) (Roberto Divia).
-
+  \item As an administrator I must be able to configure the system.
 \end{enumerate}
 
 
