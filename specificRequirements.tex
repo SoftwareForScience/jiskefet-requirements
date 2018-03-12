@@ -376,18 +376,20 @@ On the client side:
 \end{itemize}
 
 \subsubsection{Style Guide}
-Google JavaScript Style Guide
-https://google.github.io/styleguide/jsguide.html
-With subtle changes
-Allow 100 character line length, except lines with require statement
-Indentation 2
-Disallow dangle comma
-(...)
-Remarks
-Using var is forbidden (use const or let instead)
-Binding this is forbidden (use arrow function instead)
-(...)
-Implemented as linting rules (ESLint)
+For the bookkeeping system Google JavaScript Style Guide (https://google.github.io/styleguide/jsguide.html) will be used with subtle changes:
+\begin{itemize}
+  \item Allow 100 character line length, except lines with require statement
+  \item Indentation 2
+  \item Disallow dangle comma
+  \item (...)
+\end{itemize}
+Some further remarks:
+\begin{itemize}
+  \item Using var is forbidden (use const or let instead)
+  \item Binding this is forbidden (use arrow function instead)
+  \item (...)
+\end{itemize}
+These are implemented as linting rules (ESLint).
 
 \subsubsection{Package manager}
 As a package manager npm is used for Node.js. This application manages dependencies. The $O^2$ UX Framework is published under the @alice$O^2$ organisation. To install npm:
@@ -395,10 +397,10 @@ As a package manager npm is used for Node.js. This application manages dependenc
   npm install @aliceo2/aliceo2-gui
 \end{quote}
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.2]{./images/npm.png}
-    \caption{}
+    \caption{npm is the package manager for JavaScript}
     \label{fig:}
   \end{center}
 \end{figure}
@@ -406,10 +408,10 @@ As a package manager npm is used for Node.js. This application manages dependenc
 \subsubsection{Linting}
 For linting, i.e. detecting syntactic not acceptable statements, a plugable linting utility for JavaScript called ESLint is used. Because JavaScript is interpreted and compiled during runtime bugs and errors are come to light in front of the user. This is not very user friendly and degrades the user experience. ESLint is used to verify Node.js on the server side and jQuery on the client side. It will also enforce coding style which enhances maintainability. 
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.5]{./images/eslint.png}
-    \caption{}
+    \caption{The pluggable linting utility for JavaScript and JSX}
     \label{fig:}
   \end{center}
 \end{figure}
@@ -417,30 +419,30 @@ For linting, i.e. detecting syntactic not acceptable statements, a plugable lint
 \subsubsection{Testing}
 For testing the concept of unit testing is mandatory. For this QUnit is used. This is a powerful, easy-to-use JavaScript unit testing framework. It will be used for client side unit testing.
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.2]{./images/qu.png}
-    \caption{}
+    \caption{QUnit is a powerful, easy-to-use JavaScript unit testing framework. }
     \label{fig:}
   \end{center}
 \end{figure}
 
 For server side Mocha is used. This is a JavaScript test framework and runs on Node.js. It runs in the browser which makes asynchronous testing simple. It does unit and functional testing.
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.5]{./images/mocha.png}
-    \caption{}
+    \caption{Mocha is a feature-rich JavaScript test framework.}
     \label{fig:}
   \end{center}
 \end{figure}
 
-For code coverage Codecov is used. It tracks statements and branches and does functional coverage. It uses `instambul npm package' ?????? All in all it will increase the overall test coverage.
+For code coverage Codecov is used. It tracks statements and branches and does functional coverage. It uses `instambul npm package'. All in all it will increase the overall test coverage.
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.5]{./images/codecov.png}
-    \caption{}
+    \caption{Enhancing development workflows and improving code quality.}
     \label{fig:}
   \end{center}
 \end{figure}
@@ -449,10 +451,10 @@ For code coverage Codecov is used. It tracks statements and branches and does fu
 \subsubsection{Security}
 The Node Security Platform audits npm packages and provides static analysis rules. This is done in order to verify the security of dependencies and searches for insecure code patterns.
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.2]{./images/security.png}
-    \caption{}
+    \caption{Continuous Security monitoring for node apps}
     \label{fig:}
   \end{center}
 \end{figure}
@@ -460,41 +462,38 @@ The Node Security Platform audits npm packages and provides static analysis rule
 \subsubsection{Build system}
 For building the continuous integration service of Travis is used. It automatically runs PR?????? and does unit test, code coverage and linting. It is compatible with MacOS, Linux and Node.js 7 and 8.
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.3]{./images/travis.png}
-    \caption{}
+    \caption{Travis CI is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub.}
     \label{fig:}
   \end{center}
 \end{figure}
 
 \subsubsection{Reverse proxy}
-For reverse proxy Ngnix is used. It is used only during production for routing when multiple web applications reside at the same machine. It does TLS offloading ????? and load balancing.
+For reverse proxy Ngnix is used. It is used only during production for routing when multiple web applications reside at the same machine. It does TLS offloading and load balancing.
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.3]{./images/nginx.png}
-    \caption{}
+    \caption{NGINX is a free, open-source, high-performance HTTP server and reverse proxy.}
     \label{fig:}
   \end{center}
 \end{figure}
 
 \subsubsection{CSS}
-Bootstrap Reference ???? is used.
+For CSS Bootstrap Reference is used.
 
 \subsubsection{DOM}
-Abstraction of DOM (Document Object Model) tree
-Operate only on virtual tree
-Apply diffing algorithm
-State of elements in not lost
-Pure JavaScript Libraries
-Morphdom (https://github.com/patrick-steele-idem/morphdom)
-Nanomorph
+An abstraction of DOM (Document Object Model) tree should be use. When used we operate only on a virtual tree which is done by applying a diffing algorithm. The state of elements in not lost. The system should use pure JavaScript Libraries. For this the Mithril library as a template engine is used.
 
-
-
-
-
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=1]{./images/mithril.png}
+    \caption{Mithril is a modern client-side Javascript framework for building Single Page Applications.}
+    \label{fig:}
+  \end{center}
+\end{figure}
 
 \subsection{Availability}
 Given the criticality of the accounting data, the repositories should run in high availability. The views do not strictly need high availability for as long as failures remain rare and downtime low and as long as it doesn’t impact operations.
