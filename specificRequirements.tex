@@ -340,7 +340,7 @@ analysis than txt files, e.g. root-files to be able to do specific statistical a
 \section{Software System Attributes}
 The software system attributes, system quality attributes or non functional requirements are not yet fully determined. 
 
-\section{Development stack}
+\subsection{Development stack}
 The $O^2$ userinteraction framework consists of various aspects:
 \begin{itemize}
   \item http and restfull api
@@ -496,7 +496,7 @@ Nanomorph
 
 
 
-\section{Availability}
+\subsection{Availability}
 Given the criticality of the accounting data, the repositories should run in high availability. The views do not strictly need high availability for as long as failures remain rare and downtime low and as long as it doesn’t impact operations.
 
 \begin{itemize}
@@ -510,26 +510,26 @@ Given the criticality of the accounting data, the repositories should run in hig
 There are some disasters which can be mentioned. One such a disasters is when the platform for the logbook fails. This could mean an EOR. There is a redundant database for all the data. The logbook is always active. When the power is off (during Christmas) the logbook is transferred to CERN 1. \footnote{Roberto Diva}
 
 
-\section{Backup}
+\subsection{Backup}
 Backups of the repositories are mandatory. CERN facilities such as tape system can be used to store the backups. For disaster recovery, a remote copy might make sense. 
 \begin{itemize}
   \item Once a day a back up is done
   \item Redundancy should be considered
 \end{itemize}
 
-\section{Configuration management}
+\subsection{Configuration management}
 Recipes for $O^2$ adopted configuration management tools (most likely Puppet or Ansible) are mandatory in order to allow deployment and configuration changes without intervention of main developers. 
 
-\section{Documentation}
+\subsection{Documentation}
 User documentation is needed for complex actions. Administrator documentation for system administrators and on call support crew during operations. Developers documentation for newcomers, long term maintainability and in case of need for handover. 
 \begin{itemize}
   \item Use pop ups (contextual help)
 \end{itemize}
 
-\section{Evolution}
+\subsection{Evolution}
 Changes are frequent due to new requirements, changes in workflows and operational optimizations. New developments should be expected during the full lifetime of the software. The software also needs to be supported until the end of Run 4 (currently 2029). SLAs should be agreed on between AUAS and ALICE $O^2$.
 
-\section{Guidelines}
+\subsection{Guidelines}
 Software code should follow O2 guidelines and software processes. Several guidelines are available:
 \begin{table}
 \begin{tabular}{lp{7cm}}
@@ -546,7 +546,7 @@ Software code should follow O2 guidelines and software processes. Several guidel
 \end{tabular}
 \end{table}
 
-\section{Interoperability}
+\subsection{Interoperability}
 
 Software needs to integrate with the following systems: 
 \begin{itemize}
@@ -561,21 +561,21 @@ Software needs to integrate with the following systems:
 \end{itemize}
 
 
-\section{Licensing}
+\subsection{Licensing}
 Software needs to be compatible with O2 project licensing guidelines (GPLv3, copyright owners are all participating institutes). 
 License available here. 
 
-\section{Performance}
+\subsection{Performance}
 The repository should handle the load from processes running in the O2 farm and jobs running on the grid. The web server should handle the load from human visitors (should not be very high) and the load from programmatic access via the REST API. The numbers for performance of the elements mentioned are to be decided in due time. Web GUI response time should follow accepted guidelines and the acceptable latency should conform to common standards.
 
-\section{Platform compatibility}
+\subsection{Platform compatibility}
 The software should be compatible with the $O^2$ supported platforms. Server components will run in the $O^2$ facility at Point Two. The operating system will most likely be CentOs 7 or similar Linux distribution. Programmatic APIs should run on all target platforms (Linux, Apple). GUI should run on major browsers (Firefox, Chrome, Safari). Microsoft Edge to be checked.
 
-\section{Security}
+\subsection{Security}
 There should be integration with CERN Single Sign On services. And roles based on CERN e-groups. By use of certificates users get access. This is done local.
 
-\section{Serviceability}
+\subsection{Serviceability}
 Support crews should be able to independently diagnosis and either restore the service to nominal conditions or migrate to a new instance. Access model to production instances by developers team to be decided.
 
-\section{Connectivity}
+\subsection{Connectivity}
 The system should be able to function correctly without an internet connection.
