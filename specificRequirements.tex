@@ -148,6 +148,27 @@ ALICE consists of several subsystems. All these systems are able to create a log
     \item ZDC
   \end{itemize}
 
+A subsystem makes an entry into the database consisting of several items. Each entry records the following items:
+  \begin{itemize}
+    \item time of creation
+    \item which subsystem creates the entry
+    \item which class the creator originates:
+    \begin{itemize}
+      \item process
+    \end{itemize}
+    \item type of entry
+    \begin{itemize}
+      \item general
+      \item EOS
+      \item DCS
+    \end{itemize}
+    \item number of run
+    \item title of the entry
+    \item log entry
+    \item follow ups
+    \item files
+    \item actions
+  \end{itemize}
 
 
 \subsection{User stories}
@@ -162,8 +183,7 @@ ALICE consists of several subsystems. All these systems are able to create a log
   \item As a user, I want to browse through all the available metadata associated with a given run to understand on which conditions the run was made. 
   \item As a user, I want to list all runs that match a given criteria to create my own run set. 
   \item As a user, I want to see in a dashboard the metadata associated with an LHC Fill so that I can have a global image of what happened during that LHC Fill. 
-  \item As a user, I want to receive via email a global summary of each LHC Fill so that I can still follow ALICE operations without visiting the product. 
-  \item As a user, I want to be able to login with my CERN credentials to avoid having to remember a new set of credentials. 
+  \item As a user, I want to be able to login with my CERN credentials to avoid having to remember a new set of credentials. This should be done by using the CERN authentication method.
   \item As a user, I want to be able to customize dashboards so that I only see the fields relevant to me. 
   \item As a user, I want to be able to save search criteria for later use so that I don’t lose time defining them at each visit. 
   \item As an ALICE member, I would like to receive via email a global summary of each LHC Fill in order to follow ALICE operations without visiting the bookkeeping tools. Currently in the ALICE logbook I like that I receive via email a document with info on efficiency and EOR Reasons and that on the body of the email there is a summary for each fill (Vasco).
@@ -175,54 +195,47 @@ ALICE consists of several subsystems. All these systems are able to create a log
 \end{enumerate}
 
 \subsection{Shifter}
-A user (shifter or system) makes an entry into the database consisting of several items. Each entry records the following items:
-\begin{itemize}
-  \item time of creation
-  \item which subsystem creates the entry
-  \item which class the creator originates:
-  \begin{itemize}
-    \item human
-    \item process
-  \end{itemize}
-  \item type of entry
-  \begin{itemize}
-    \item general
-    \item EOS
-    \item DCS
-  \end{itemize}
-  \item number of run
-  \item author of the entry (when the author is a human)
-  \item title of the entry
-  \item log entry
-  \item follow ups
-  \item files
-  \item actions
-\end{itemize}
-
-Currently this shifter is looking at ECS/DAQ-, CTP- or HLT-subsystem. 
 \begin{enumerate}
+  \item A shifter makes an entry into the database consisting of several items. Each entry records the following items:
+  \begin{itemize}
+    \item time of creation
+    \item which class the creator originates:
+    \begin{itemize}
+      \item human
+    \end{itemize}
+    \item type of entry
+    \begin{itemize}
+      \item general
+      \item EOS
+      \item DCS
+    \end{itemize}
+    \item number of run
+    \item author of the entry
+    \item title of the entry
+    \item log entry
+    \item follow ups
+    \item files
+    \item actions
+  \end{itemize}
   \item As a shifter, I want to have templates that prefill most of my end-of-shift reports from the available metadata so that I don’t need to fill in myself what the system already knows (Vasco).
   \item As a Shifter, I would like to have templates that automatically compile and format the data available in the system in order to write my end of shift report in a fast and uniform way. Currently in the ALICE logbook I don't like that I need to compile all the information myself and that not all shifters use the same structure (Vasco).
   \item As a shifter I want to view log entries.
   \item As a shifter I want to be able to create log entries.
   \item As a shifter I want to view announcements.
-  \item As a shifter I want to be able to create announcements.
   \item As a shifter I want to view on call interventions.
-  \item As a shifter I want to be able to create on call interventions.
-  \item As a shifter I want to be able to create gas log entries.
   \item As a shifter I want to view some statistics of runs and other stuff.
   \item As a shifter I want to view data about calibration of the detector.
   \item As a shifter I want to be able to have a big screen view.
   \item As a shifter I want to view data about the fill.
   \item As shifter I would like to have templates that automatically compile  and format the data available in the system in order to write my end of shift report in a fast and uniform way. Currently in the ALICE logbook I don't like that I need to compile all the information myself and that not all shifters use the same structure (Roberto Divia).
   \item As shifter I have to create log entries concerning any system (alone or in combination) (Roberto Divia).
-  \item As run co\"ordinator I may have to cross-reference log entries (e.g. by URL, by unique Reference ID, or by run number)  (Roberto Divia).
+  \item As shifter I may have to cross-reference log entries (e.g. by URL, by unique Reference ID, or by run number)  (Roberto Divia).
   \item  As shifter I may need to attach files to log entries. These files may contain text or binary information (PNGs, JPGs etc...) (Roberto Divia).
   \item As shifter I may need to cross reference log entries or other logbook fields (e.g. run numbers, fill numbers etc...) with whatever issue tracking system will be used by the ALICE collaboration (today: Jira). This association may also be done automatically by daemons (e.g. what is done today for EOR reasons and Jira tickets) (Roberto Divia).
 
 \end{enumerate}
 
-\subsection{Role Run Co\"ordinator}
+\subsection{Run Coordinator}
 \begin{enumerate}
   \item As run co\"ordinator, I want shifters to use templates so that it is easier and faster to read them (Vasco). 
   \item As run co\"ordinator, I want to attach tags to runs so that I can then use them while searching (Vasco). 
@@ -241,16 +254,15 @@ Currently this shifter is looking at ECS/DAQ-, CTP- or HLT-subsystem.
   \item As run co\"ordinator I may need to cross reference log entries or other logbook fields (e.g. run numbers, fill numbers etc...) with whatever issue tracking system will be used by the ALICE collaboration (today: Jira). This association may also be done automatically by daemons (e.g. what is done today for EOR reasons and Jira tickets) (Roberto Divia).
 \end{enumerate}
 
-\subsection{Subsystem Co\"ordintor}
-Each subsystem has its own co\"ordinator. In the future these will be called SRCs.
+\subsection{Subsystem Run Coordinator}
+Each subsystem has its own Subsystem Run Coordinator (SRC). 
 \begin{enumerate}
-  \item As a subsystem responsible, I want to be notified by email (or other channels) of log entries which are related with my subsystem so that I can better follow-up activities without having to constantly visit the product (Vasco). 
-  \item As subsystem expert, I want to attach quality flags to runs so that physicists can use them while searching for good data sets for their analysis (Vasco). 
+  \item As a subsystem responsible, I want to be notified by email (or other channels) of log entries which are related with my subsystem so that I can better follow-up activities without having to constantly visit the product, e.g. EOS report (Robert Munzer) (Vasco). 
+  \item As a subsystem expert, I want to attach quality flags to runs so that physicists can use them while searching for good data sets for their analysis (Vasco). 
   \item As a subsystem expert, I want to store custom fields that are only relevant to my subsystem so that I can correlate them with the rest of the metadata repository (e.g. ‘fetch all runs with configuration X where this happened to my detector’) (Vasco). 
-  \item As an detector expert I would like be able to extract run/fill information in a format, which allows easier
+  \item As a detector expert I would like be able to extract run/fill information in a format, which allows easier
 analysis than txt files, e.g. root-files to be able to do specific statistical analysis (Robert Munzer).
-  \item As a detector expert I would appreciate to subscribe to certain kind of logbook messages, e.g. EOS report (Robert Munzer).
-  \item As an SRC I would like to be able to create own detector specific templates for example On-Call interventions. In this case I can specify the relevant information which are required from the OnCall shifter for different kind of “standard” events (Robert Munzer).
+  \item As a SRC I would like to be able to create my own detector specific templates for example On-Call interventions. In this case I can specify the relevant information which are required from the OnCall shifter for different kind of “standard” events (Robert Munzer).
   \item As ECS/DAQ System Run Coordinator I need a way to access information of runs matching a selection criteria I specify (timestamps, run numbers, run types, included detectors etc...). Navigation between runs must be easy and quick. The target is to check the global runs (production and tests) for quality and errors (Roberto Divia).
   \item As System Run Coordinator I need ways to interrogate all the runs where the System I am responsible for participated and to get access to individual run entries and to summary statistics (Roberto Divia).
   \item As subsystem run co\"ordinator I have to create log entries concerning any system (alone or in combination) (Roberto Divia).
@@ -263,23 +275,23 @@ analysis than txt files, e.g. root-files to be able to do specific statistical a
   \item  As subsystem run co\"ordinator I may need to attach files to log entries. These files may contain text or binary information (PNGs, JPGs etc...) (Roberto Divia).
   \item As subsystem run co\"ordinator I may need to cross reference log entries or other logbook fields (e.g. run numbers, fill numbers etc...) with whatever issue tracking system will be used by the ALICE collaboration (today: Jira). This association may also be done automatically by daemons (e.g. what is done today for EOR reasons and Jira tickets) (Roberto Divia).
   \item The subsystem co\"ordinator wants to be reported when something is going with his system. He should not have to take action for himself to find out things (Robert Helmut Munzer).
-
 \end{enumerate}
 
 \subsection{On Call expert}
-A person who is called for a specific intervention makes an entry into the log system consisting of the following items:
-\begin{itemize}
-  \item time of creation
-  \item author
-  \item type of intervention:
+\begin{enumerate}
+  \item A person who is called for a specific intervention makes an entry into the log system consisting of the following items:
   \begin{itemize}
-    \item remote
-    \item onsite
+    \item time of creation
+    \item author
+    \item type of intervention:
+    \begin{itemize}
+      \item remote
+      \item onsite
+    \end{itemize}
+    \item title of entry
+    \item log entry
   \end{itemize}
-  \item title of entry
-  \item log entry
-\end{itemize}
-
+\end{enumerate}
 
 \subsection{System team member}
 \begin{enumerate}
