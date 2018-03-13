@@ -15,11 +15,11 @@ The ALICE experiment is a collaborative experiment of approximate 1800 persons f
 
 At Point 2 where ALICE is located several activities are done:
 \begin{itemize}
-  \item Run Coordination, doing planning of shifts using SAMS
-  \item Technical Coordination which concerns infrastructure and safety such as the cooling system,
   \item Detectors are located at Point 2, experts interventions are done 56 meters underground,
+  \item Run Coordination, doing planning of shifts using Shift Accounting and Management System (SAMS),
+  \item Shifts are conducted in the operating room (above ground),
   \item Central systems which also are visited by experts,
-  \item Shifts are conducted in the operating room (above ground).
+  \item Technical Coordination which concerns infrastructure and safety such as the cooling system.
 \end{itemize}
 
 The operation modes of ALICE are to be in:
@@ -31,41 +31,31 @@ The operation modes of ALICE are to be in:
 
 
 \subsection{Data Acquisition}
-The Data Acquisition system (DAQ) is handling the dataflow from the detector electronics to storage. All this is done in memory and synchronous with LHC operations. Downtime of the DAQ results in lost data. Each data acquisition and the resulting data set is identified by a Run Number, i.e. a positive integer.
+The Data Acquisition system (DAQ) is handling the data flow from the detector electronics to storage. All this is done in memory and synchronous with LHC operations. Downtime of the DAQ results in lost data. 
 
 \begin{figure}
   \begin{center}
     \includegraphics[scale=0.3]{./images/daq.png}
-    \caption{}
+    \caption{Data flow at ALICE}
     \label{fig:}
   \end{center}
 \end{figure}
 
 \subsection{Reconstruction and calibration}
-What is measured in ALICE and its detectors are electrical signals. These signals have to be reconstructed in order to conclude that a particle has been present. The reconstruction has to take the detector conditions into account. This calibration is currently been done offline but will be done both offline as an asynchronous process and online as a synchronous process in the future. When the calibration is done online downtime of the computers working on the calibration will result in data loss. Because the calibration will be an integral part of the online system and each delay in this system will have immediate repercussions further up the line.
+What is measured in ALICE and its detectors are electrical signals. These signals have to be reconstructed in order to conclude that a particle has been present. The reconstruction has to take the detector conditions into account. This calibration is currently been done offline. In the future this will be done both offline as an asynchronous process and online as a synchronous process. Because the calibration will be an integral part of the online system each delay in this system will have immediate repercussions further up the line and downtime of the computers working on the calibration will result in data loss.
 
-On the same original raw data set multiple reconstruction passes can be done. This can be due to having found a bug in earlier reconstruction software and better software is developed or finding a not yet detected bias in the raw data resulting in a better calibration set. A new calibration set now becomes available within months. In the future this could be within hours. And so the system should be very flexible. It may happen that the same data will be re-calibrated 20 times. With the help of metadata this must be book kept.
+On the same original raw data set multiple reconstruction passes can be done. This can be due to having found a bug in earlier reconstruction software and better software is developed or finding a not yet detected bias in the raw data resulting in a better calibration set. A new calibration set now becomes available within months. In the future this could be within hours. And so the system should be very flexible. It may happen that the same data will be re-calibrated 20 times. The bookkeeping system should keep track of this calibration process.
 
 The Light Production Management runs operations on the offline activities which are done on the Grid. In Figure \ref{fig:offlineWorkflow} the CPasses are dry runs and OAD are Object Analysis Data. Such offline activity is done 24 hours each day of the week and all year along.
 
 
 \subsection{Simulation}
-To know which collisions are of interest and what we can learn from these collisions, simulations are created using among other methods the Monte Carlo (MC) statistical method. These simulations are run on the Grid and are completely decoupled from LHC operations. Normally such simulations are associated with or anchored to an actual raw data set taken from a run, i.e. the conditions for the run are the same as for the simulations. There is no limit to the number of MC productions for a particular run. A new MC production can be started because of better software becoming available or because the chosen parameters are different.
-
-
-\subsection{Data Preparation Group}
-Data Preparation Group (DPG) was created for:
-\begin{itemize}
-  \item data preparation, i.e. reconstruction and simulation. This consists of production configuration, setup, calibration monitoring.
-  \item data processing, i.e. monitoring, execution, reporting, bug tracking.
-  \item quality assurance, i.e. validation and creating lists of good runs or data sets.
-\end{itemize}
-
+To know which collisions are of interest and what we can learn from these collisions, simulations are created using among other methods the Monte Carlo (MC) statistical method. These simulations are run on the Grid and are completely decoupled from Large Hydron Collider (LHC) operations. Normally such simulations are associated with or anchored to an actual raw data set taken from a run, i.e. the conditions for the run are the same as for the simulations. There is no limit to the number of MC productions for a particular run. A new MC production can be started because of better software becoming available or because the chosen parameters are different.
 
 
 
 \subsection{Analysis}
-Physicists from all over the world are doing analyses on the reconstructed data and produce papers about their findings. The physicists are the end user of ALICE and the bookkeeping system. The analyses are run on the Grid which is completely decoupled from the LHC operations. Normally these analyses run as trains, i.e. multiple analysis jobs using the same data sets are packed together.
+Physicists from all over the world are doing analyses on the reconstructed data and produce papers about their findings. The physicists are the end user of ALICE and the bookkeeping system. The analyses are run on the Grid which is completely decoupled from the LHC operations. Normally these analyses run as trains, i.e. multiple analysis jobs using the same data sets are packed together (as trains consist of various wagons).
 
 
 
@@ -79,10 +69,10 @@ During the LS 2 ALICE will be upgraded. The upgrade will be done on many subsyst
   \item[HLT] A new High Level Trigger will be installed.
   \item[MFT] In the Muon Forward Tracker a new SI tracker will be installed. The MUON pointing precision will be improved.
   \item[MUON ARM] The MUON ARM will get new continuous readout electronics.
-  \item[FIT] There will be new Trigger detectors installed.
-  \item[TOF] The TOF will be read out faster.
-  \item[TRD] The TRD will be read out faster.
-  \item[ZDC] The ZDC will be read out faster.
+  \item[FIT] There will be a new First Interaction Trigger installed.
+  \item[TOF] The Time Of Flight detector will be read out faster.
+  \item[TRD] The Transition Radiation Detector will be read out faster.
+  \item[ZDC] The Zero Degree Calorimeter will be read out faster.
 \end{description}
 
 \begin{figure}[h]
@@ -101,7 +91,7 @@ Unmodified raw data of all interactions will be shipped from the detectors to th
 From the detector electronics 8500 GBTs links will send signals to the 270 FLPs. These will use hardware acceleration using FPGAs. A switching network will distribute this data to 1500 EPNs. These processing nodes use GPUs for hardware acceleration. The EPNs use a switching network to send the data to the storage. This storage can write at 170 GB/s and read at 270 GB/s. The capacity for storage is 60 PB.
 
 \subsection{Work packages}
-To manage the $O^2$ update several work packages are created:
+To manage the $O^2$ update several work packages were created:
 \begin{description}
   \item[WP 1] Data Model
   \item[WP 2] Data Flow and System Simulation
@@ -306,6 +296,9 @@ A Log Entry is a text message that describe an intervention or an event that hap
 
 \subsubsection{Run}
 A Run is a unique ID that identifies a synchronous data processing session in the $O^2$ computing system with a specific and well-defined configuration. It normally ranges from a few minutes to tens of hours. It is generated and managed by the $O^2$ system. 
+
+\subsubsection{Run number}
+Each data acquisition and the resulting data set is identified by a Run Number, i.e. a positive integer.
 
 \subsubsection{LHC Fill}
 An LHC Fill is a unique ID that identifies a period of activity in the LHC accelerator. It normally ranges from a few minutes to tens of hours. It is generated and managed by the LHC system and published via DIP protocol. 
