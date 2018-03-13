@@ -86,7 +86,7 @@ After the LS 2 the LHC produce Pb–Pb collisions at up to $L = 6.10^{27} cm^{-2
 
 The 50 kHz rate for collisions produces about 100 times more data than was produced in 2010. This will give the physicists the opportunity to detect very rare processes with very small signal over background ratio. Because the triggering techniques are very inefficient if not impossible, support for continuous read-out is developed. Therefore a new computing system, $O^2$, is created. It will read-out the data of all interactions and compress these data intelligently by online reconstruction. The system will be one common online-offline computing system.
 
-Unmodified raw data of all interactions will be shipped from the detectors to the online farm in triggerless continuous mode. This  amounts to 3.4 TB/s. Then a baseline correction and zero suppression will take place. The data volume will be reduced by zero cluster finder. No event is discarded. The average compression factor is 6.6. Then 500 GB/s will be shipped. A data volume reduction is done by online tracking. Only reconstructed data will be send to data storage. The average compression factor is 5.5. From here 90 GB/s will be transported. In the Data Storage one year of compressed data will be kept. From this storage facility 20 GB/s will be transported to tier 0 and tier 1. The events will also be reconstructed for final calibration.
+Unmodified raw data of all interactions will be shipped from the detectors to the online farm in triggerless continuous mode. This  amounts to 3.4 TB/s. Then a baseline correction and zero suppression will take place. The data volume will be reduced by zero cluster finder. No event is discarded. The average compression factor is 6.6. Then 500 GB/s will be shipped. A data volume reduction is done by online tracking. Only reconstructed data will be send to data storage. The average compression factor is 5.5. From here 90 GB/s will be transported. In the data storage one year of compressed data will be kept. From this storage facility 20 GB/s will be transported to tier 0 and tier 1. The events will also be reconstructed for final calibration.
 
 From the detector electronics 8500 GBTs links will send signals to the 270 FLPs. These will use hardware acceleration using FPGAs. A switching network will distribute this data to 1500 EPNs. These processing nodes use GPUs for hardware acceleration. The EPNs use a switching network to send the data to the storage. This storage can write at 170 GB/s and read at 270 GB/s. The capacity for storage is 60 PB.
 
@@ -112,6 +112,8 @@ To manage the $O^2$ update several work packages were created:
   \item[WP 17] Computing Room CR0 (EPN)
 \end{description}
 
+The bookkeeping system is part of WP 8. WP 8 has once every two weeks a meeting at Tuesday morning at 10.00 AM. Once every two months the $O^2$ technical board meets. An $O^2$ data model for bookkeeping should be available in January 2018.
+
 \section{Purpose}
 In this section the purpose of the application to build is described. The context of the bookkeeping system is described in the previous section. In this section the reasons for and ideas on the update of the bookkeeping system will be elaborated.
 
@@ -130,7 +132,7 @@ The motivation to do an upgrade is threefold. First it makes sense to unify the 
 
 The goal is a bookkeeping system which is responsive to different media used and has a unified look and feel. It should be compatible to the current system and accessible from inside and outside of CERN. The authorisation and authentification should be based on the central systems as made available by CERN. It should be supported as long as it is in use by ALICE.
 
-There are several challenges for the update of the bookkeeping system. The bookkeeping system is critical to the ALICE operations. It is critical because without proper bookkeeping of the data, i.e. bookkeeping the metadata referring to the physics data produced by ALICE, the data itself, i.e. the data produced by the detectors, becomes useless. The workflows which should be registered in the system are quite complex. Because the AUAS is a newcomer to the High Energy Physics community a lot has to be learned about vocabulary and jargon. The schedule for the project is also a challenge. At the end of next year (2018) a (small) part of the system has to be delivered while the whole system should be in production in 2021. Another difficulty for the project is found in the migration from the existing to the new tool. A part of the bookkeeping system concerns the off line activity for recovering data and quality control. This work will not stop during the Long Shutdown 2 and for this work to be done a continuous use of the system will take place. Lastly, support for the system will have to be done until 2029.
+There are several challenges for the update of the bookkeeping system. The bookkeeping system is critical to the ALICE operations. It is critical because without proper bookkeeping of the data, i.e. bookkeeping the metadata referring to the physics data produced by ALICE, the data itself, i.e. the data produced by the detectors, becomes useless. The workflows which should be registered in the system are quite complex. Because the Amsterdam University of Applied Sciences (AUAS) is a newcomer to the High Energy Physics community a lot has to be learned about vocabulary and jargon. The schedule for the project is also a challenge. At the end of next year (2018) a (small) part of the system has to be delivered while the whole system should be in production in 2021. Another difficulty for the project is found in the migration from the existing to the new tool. A part of the bookkeeping system concerns the offline activity for recovering data and quality control. This work will not stop during the Long Shutdown 2 and for this work to be done a continuous use of the system will take place. Lastly, support for the system will have to be done until 2029.
 
 During Run 1 and 2 a lot of experience concerning the use of the bookkeeping system is accumulated. Developers of the new system have the opportunity to elicit the experience of the past users and use this to their advantage. Modern technologies should make it more easy to develop a bookkeeping system. Because the AUAS is the task owner to create the bookkeeping system it is expected this should generate a lot of energy to make it happen.
 
@@ -141,11 +143,11 @@ Provide unified bookkeeping experience for operations, run catalogue and managem
 Access in a single place all metadata related with operational activities. Keep historical record of used configurations, statistics and data quality. Produce reports for operational teams and management. 
 
 \subsection{Product}
-Dashboards for run metadata with different levels of detail. Search for data sets that match given criteria. Forms for creating textual log entries. Notifications for interventions, main events and summary reports. API for read/write access to metadata repository. 
+Dashboards for run metadata with different levels of detail. Search for data sets that match given criteria. Forms for creating textual log entries. Notifications for interventions, main events and summary reports. REST API for read/write access to metadata repository. 
 
 
 \subsection{Business goals}
-Adapt to new O2 data model. Consolidate existing ALICE Electronic Logbook and Run Conditions Table in a single product. Refresh used technologies and make the product more future oriented. Integrate gathered experience and introduce missing features. 
+Adapt to new $O^2$ data model. Consolidate existing ALICE Electronic Logbook and Run Conditions Table in a single product. Refresh used technologies and make the product more future oriented. Integrate gathered experience and introduce missing features. 
 
 
 
@@ -207,7 +209,7 @@ For this it uses a MySQL database with 27 tables and 312 fields. This is a singl
   \item DIM for detector teams,
   \item REST for other systems.
 \end{itemize}
-The Web GUI is created by using PHP on the server side. For this no framework is used. On the client side Javascript is used.
+The Web GUI was created by using PHP on the server side. For this no framework is used. On the client side Javascript is used.
 
 
 \subsubsection{AliMonitor}
@@ -232,7 +234,7 @@ AliMonitor is using a PostgreSQL database with about 30 tables. It has two insta
 There are a few scattered repositories such as:
 \begin{itemize}
   \item TWiki
-  \item Jira
+  \item JIRA
   
 \end{itemize}
 
@@ -270,17 +272,10 @@ Data taking with the current system stops end 2018. Then a migration can be done
 
 The offline activities will be going on. A date has to be set to use the new bookkeeping system. It should be carefully prepared which part will be migrated.
 
-\subsection{Organisation}
-The bookkeeping system is part of WP 8. WP 8 has once every two weeks a meeting at Tuesday morning at 10.00 AM. Once every two months the $O^2$ technical board meets. 
-
-An $O^2$ data model for bookkeeping should be available in January 2018.
-
-
-
 \section{Definitions, Acronyms, and Abbreviations}
 
 \subsection{Offline metadata model}
-The offline activities are administered by AliMonitor\footnote{Most information provided in this chapter is gathered during an interview with Costin Grigoras on Tuesday 12 December 2017}. Costin Grigoras is the main developer of this system. The current system is the minimum which is needed for this activity. Figure \ref{fig:offlineWorkflow} shows the workflow off the offline activities. Castor is software to manage tapes on CERN tier 0. For all these files there is an url stored in ALien (e.g. pointers). Shuttle is calibration data stored on EOS. The Lightweight Production Manager (LPM) is software to manage disks on CERN. The LPM decides based on several variables that a run will be reconstructed. CPass means Calibration Pass. 
+The offline activities are administered by AliMonitor\footnote{Most information provided in this chapter is gathered during an interview with Costin Grigoras on Tuesday 12 December 2017}. Costin Grigoras is the main developer of this system. The current system is the minimum which is needed for this activity. Figure \ref{fig:offlineWorkflow} shows the workflow off the offline activities. Castor is software to manage tapes on CERN tier 0. For all these files there is an url stored in AliEn (e.g. pointers). Shuttle is calibration data stored on EOS. The LPM is software to manage disks on CERN. The LPM decides based on several variables that a run will be reconstructed. CPass means Calibration Pass. 
 
 \begin{figure}[h]
   \begin{center}
@@ -426,7 +421,7 @@ Subjobs are the finest granularity of processing. Each subjob has several parame
 \end{itemize}
 These execution logs are part of the output. This hard work as shown by some statistics. The number of jobs which run parallel  is 120,000. There is a turnover of 10 per second. Each second 200,000 entities are monitored and AliEn has to process 40,000 queries each second.
 
-\subsubsection{RCT}
+\subsubsection{Run Condition Table}
 This data structure consists of:
 \begin{itemize}
   \item Quality flags defined by detector experts
