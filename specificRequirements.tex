@@ -188,6 +188,7 @@ A subsystem makes an entry into the database consisting of several items. Each e
 \item As ALICE collaborator I need APIs to retrieve specific fields in the Logbook using selection criterias I provide. This access must be restricted, probably API by API or by fields being accessed, and protected against intentional or unintentional DoS attacks (Roberto Divia).
 \item As ALICE collaborator I need to be able to access the Logbook on a run-per-run summary view (possibly using a selection criteria I specify) and on a log entry by log entry view (possibly using a selection criteria I specify) (Roberto Divia).
 \item As ALICE collaborator I need to check the details of any run: EOR reason, statistics, log entries (Roberto Divia).
+  \item People can create issues (Pierre vanden Vyvre)
 \end{enumerate}
 
 \subsection{Shifter}
@@ -321,7 +322,21 @@ The is a need for reports on resource usage. This is a management view.
 
 \subsection{ALICE management}
 \begin{enumerate}
-  \item 
+  \item Each week global and specific statistics about the system are needed
+  \begin{itemize}
+    \item CPU usage
+    \item data storage
+    \item etc.
+  \end{itemize}
+  \item evolution of the queue between synchronous and asynchronous computing
+  \item logbook images of statistics
+  \item statistics or number of issues per project and detector
+  \item daily report about data taking and data processing for the meeting at Point 2.
+  \begin{itemize}
+    \item how long is data been taken?
+    \item what are the issues?
+  \end{itemize}
+  \item As a manager I want to know whether all the relevant people are involved with respect to an issue (Pierre vanden Vyvre).
 \end{enumerate}
 
 
