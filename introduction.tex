@@ -235,7 +235,119 @@ There are a few scattered repositories such as:
 \begin{itemize}
   \item TWiki
   \item JIRA
-  
+\end{itemize}
+
+\subsubsection{Reconstruction and Monte Carlo Simulations}
+when the signals from the detectors are gathered, a process of reconstruction starts to create data. This data is compared to the data created with Monte Carlo simulations to detect whether the raw data, i.e. from the detector, is of interest for further research. 
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.3]{./images/reconstruction.png}
+    \caption{Data reconstruction chain}
+    \label{fig:reconstruction}
+  \end{center}
+\end{figure}
+
+This process of reconstruction is done according the workflow presented in Figure \ref{fig:reconstruction}. It is shown that only a small part of this process is done online. In the future this will be a larger part of this process. After a calibration online the data is stored in the Offline Condition Data Base. Then in two Calibration Passes the data is calibrated. CPass0 starts maximally one day after production. A manual process is done to check on the automated process. After this check the data is further transported and metadata is stored in the Run Condition Table (RCT). This process takes about four workdays. The CPass0 and CPass1 are regularly updated. For example, a small part of the Pb-Pb data taken in 2015 has been given a second calibration because of a bug. The calibration can be changed over time for old data and the content of the calibration algorithms can be changed. These changes have to be recorded and tracked in the bookkeeping system. PPass takes 10 to 15 days. The workflow in all takes about one month. Meanwhile there is parallel activity.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.7]{./images/mc_production.png}
+    \caption{MC production workflow}
+    \label{fig:}
+  \end{center}
+\end{figure}
+
+MC simulations can be anchored, i.e. based on configuration during a period. Sometimes a full MC run is done and still another adjustment on software is done. These will be tagged. 
+
+Systems used in production
+\begin{enumerate}
+  \item MC productions - MonALISA
+  \begin{itemize}
+    \item Automatic/manual triggering, execution, error tracking, resubmissions, add/delete productions/periods/runs, status
+    \begin{itemize}
+      \item Running jobs, waiting jobs, errors
+      \item LPM (Light Production Manager)
+      \item Productions’ listing
+      \item MC Production Database, unique identifier for the production LHC17xxx 
+    \item RCT
+    \end{itemize}
+  \end{itemize}
+  \item JIRA
+  \begin{itemize}
+    \item RAW
+    \begin{itemize}
+      \item Software used (CVMFS)
+      \item Status (10\% QA <=> CPass1, Final QA <=> PPass1)
+      \item Final QA reports
+      \item Extended comments
+    \end{itemize}
+    \item MC
+    \begin{itemize}
+      \item Sampling
+      \item Runlist (optional)
+      \item Generator details (+ Github AliDPG)
+      \item PB request/approval/priority
+      \item PWG (common/analysis dedicated) ==> detector/analysis QA
+      \item Link to JDL on alien
+      \item Production status (Suspended/Open/Setup/Software update/Running 10\%/Running full statistics/Completed/Done/10\% QA/Final QA
+      \item Missing: link to published paper/analysis - to be used for clean-up of not used productions
+      \item Dashboards to extract reports/summary for the production
+      \begin{itemize}
+        \item MC production summary
+        \item MC productions requiring further feed-back
+        \item Production campaigns (big conferences)
+      \end{itemize}
+      \item QA
+    \end{itemize}
+  \end{itemize}
+  \item TWiki
+    \begin{itemize}
+      \item Good runlists
+      \item Per period details
+      \item Software version used
+      \item Reports, summary
+      \item Guidelines for analyses
+    \end{itemize}
+\end{enumerate}
+At the moment post production changes in the logbook are not propagated to AliMonitor. JIRA tickets have usely 100 comments. There is a discussion at the moment when data can be deleted. JIRA, MonAlisa and TWiki should be combined. The calibration process evolves and so the system has to be flexible. At least it must be possible to have more than one pass. JIRA is giving problems with specific functionalities, e.g. no automatic functionalities, the system is not always easy to deliver data and it is difficult to search information on a specific ticket. At the end of a ticket a summary is made manually. Sometimes you have to read 200 comments. There should be an automatic watch-dog. There are some technical limitations of JIRA. It should keep track of production and final QA. JIRA is good for comments but in the end you want to conclude. Can there be an integration of JIRA in the bookkeeping system.
+
+\subsubsection{Quality Assurance}
+
+There is not a general Quality Assurance (QA) tool for all detectors. The DPG-teammmember has to go manually from detector to detector-file or directory, which is rather cumbersome. 
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.25]{./images/qa_process_chain.png}
+    \caption{Quality Assurance processing chain}
+    \label{fig:}
+  \end{center}
+\end{figure}
+
+The QA-members are not sure whether in run 3 and run 4 run numbers still exist. Now there are events. With continuous read-out there will not be events but time frames. Still, there will always be collisions. In run 3 there will be more collisions per time frame. When QA goes online the calibration objects should also be accounted for. All the data gathered during run 1 and run 2 should be accessible in the future.
+
+How we do it?
+
+analysis of QAresults.root files by QA team (experts of QA for each detector)
+\begin{itemize}
+  \item post processing macro (run centrally at cern) and synchronized (cronjobs) to web repository (afs/..../aliqa<DET>/www/data/year/period/pass/ or( /eos/.../) -> trending.root files and trending plots; individual runplots
+  \begin{itemize}
+    \item (simple bookkeeping eg: emcal) http://aliqaemc.web.cern.ch/aliqaemc/data/2017/LHC17m/pass1/
+    \item more elaborate tool tpc: http://aliqatpc.web.cern.ch/aliqatpc/data/2017/LHC17m/pass1/
+  \end{itemize}
+  \item manual call (by mail) of DPGQA to QAdetector team to inspect and provide feedback through meetings+JIRA
+  \begin{itemize}
+    \item once all collected and production pass OK (expected 1 week after all runs reconstructed) -> FILL RCT by detectors
+  \end{itemize}
+  \item runlist creation: manually done by DPGQA
+    \begin{itemize}
+    \item need of several steps accessing
+      \begin{itemize}
+      \item monalisa processing page (for getting the list of run processed in the pass
+      \item propagating it in RCT
+      \item selecting proper flags flagging posted to twiki
+      \end{itemize}
+  \end{itemize}
 \end{itemize}
 
 \subsection{Time constraints}
@@ -288,6 +400,12 @@ The offline activities are administered by AliMonitor\footnote{Most information 
 
 \subsubsection{Log Entry}
 A Log Entry is a text message that describe an intervention or an event that happened. It can be generated either by humans (e.g. a shifter enters his/her end-of-shift report) or by machines (e.g. a detector logs some abnormal situation automatically). 
+
+\subsubsection{Period}
+Periods contain runs under the same conditions.
+
+\subsubsection{Production}
+Productions involving the same calibration. LHC17c1: '17': year of production, 'c': month of production, '1': number of production.
 
 \subsubsection{Run}
 A Run is a unique ID that identifies a synchronous data processing session in the $O^2$ computing system with a specific and well-defined configuration. It normally ranges from a few minutes to tens of hours. It is generated and managed by the $O^2$ system. 

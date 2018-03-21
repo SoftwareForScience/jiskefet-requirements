@@ -6,7 +6,7 @@
 The interfaces of the bookkeeping system with the rest of the world are:
 \begin{itemize}
   \item a GUI, for several users the system offers different GUIs
-  \item API, the system offers several APIs to work with
+  \item a REST-API, the system offers several bindings to work with
 \end{itemize}
 
 \subsection{User interfaces}
@@ -17,13 +17,13 @@ The bookkeeping system offers users interfaces for several users:
   \item (subsystem) run coordinators
   \item etc.
 \end{itemize}
-For all these users the user interface will be different due to their specific needs.
+The user interface will adapt to the needs of the user.
 
 \subsection{Hardware interfaces}
-The bookkeeping system has no specific hardware needs above the normal hardware requirements for an administrative system.
+The bookkeeping system has no specific hardware needs above the normal hardware requirements for an administrative system. The client must be able to run on the computers at Point 2.
 
 \subsection{Software interfaces}
-The bookkeeping system interacts with several systems already in place or to be developed in the future. For this interaction the bookkeeping system should have facilities such as APIs.
+The bookkeeping system interacts with several systems already in place or to be developed in the future. For this interaction the bookkeeping system should have facilities such as an API and several bindings.
 
 \subsubsection{Database}
 The choice of database is not yet made. Currently two databases are in use:
@@ -34,11 +34,7 @@ The choice of database is not yet made. Currently two databases are in use:
 The choice of database is not limited to the two mentioned. Given the highly relational nature of the date the development team will probably propose a relational database.
 
 \subsection{Communications interfaces}
-No special communication protocol is needed.
-
-The bookkeeping system should use a REST API. 
-
-A message queue is needed to decouple the execution of the $O^2$ workflows from any failure in the $O^2$ bookkeeping backend.
+No special communication protocol is needed. The bookkeeping system should use a REST API on HTTP. A message queue is needed to decouple the execution of the $O^2$ workflows from any failure in the $O^2$ bookkeeping backend. Furthermore, the bookkeeping system should be able to function while disconnected from the internet.
 
 \subsection{Memory}
 The bookkeeping system has no special requirements concerning use of memory.
@@ -51,6 +47,7 @@ The bookkeeping system will be used on one particular site, i.e. Point 2 where A
 
 \section{Product functions}
 \subsection{GUI}
+The bookkeeping system should be responsive to several platforms, such as mobile devices, laptops, touch screen devices etc.
 \begin{enumerate}
   \item An idea would be to have different looks\footnote{From: Grazia Luparello}:
   \begin{itemize}
@@ -89,7 +86,7 @@ A user is someone who uses the system for general purpose.
 When ALICE is active there are five persons in the operater room. The run manager stays for two weeks and is 24/7 in the operator room. The crew of four consists of a shift leader, who is coordinator of the crew and three shifters, i.e. a DAQ-shifter, a DCS-shifter and a DQM-shifter. A shift takes eight hours and is done within six days. Each shifter takes two morning shifts, two evening shifts and two night shifts. Some shifters do take only one shift sequence of six days. Shifters have various degrees of experience. Shifters only need the most recent information. 
 
 \subsubsection{Shifter}
-A shifter is a person who operates a part of ALICE. One of the subsystems his or her responsibility. Currently this shifter is looking at ECS/DAQ-, CTP- or HLT-subsystem. A shifter takes on a shift of 8 hours which can be in daytime or nighttime. A shifter is an employee of collaborating member of ALICE. Level of education varies but is most of the time Master or PhD in Physics.
+A shifter is a person who operates a part of ALICE. One of the subsystems his or her responsibility. Currently this shifter is looking at ECS/DAQ-, CTP- or HLT-subsystem. A shifter takes on a shift of eight hours which can be in daytime or nighttime. A shifter is an employee of collaborating member of ALICE. Level of education varies but is most of the time Master or PhD in Physics.
 
 In training the shifter learns that when in doubt a log entry should be made. The EOS-report is an interaction with the (subsystem) run coordinator. A template should be enforced. 
 
@@ -100,6 +97,7 @@ Shifters do have problems with the electronic logbook:
   \item they forget the permission for the logbook: to write you have to be in a list,
   \item shifters have to do some training which has to be marked down in SAMS, otherwise they can't do a shift,
   \item there should be a coherent way to create entries (a template?),
+  \item a specific period to make entries,
   \item the less freedom the better.
 \end{itemize}
 
@@ -139,10 +137,13 @@ There is no correction from offline to online. The Data Quality Monitor (DQM) wi
 The DAQ creates metadata, just as other subsystems. This metadata has to be stored in the bookkeeping system. The electronic logbook is used to describe a run. Problems and human errors are logged. These log entries are post mortem used to find out what happened. The shifter, technician and subsystems themselves are creating this data. On callers also interact with the logbook. The logbook is the basic channel of communication.
 
 
-Roberto is often called upon to currate End or Run (EOR) reasons, reasons to end the run and thus stop ALICE. He looks for reasons in the electronic logbook. In 99\% of the EORs he succeeds in finding the reason. EOR reasons are given at first by subsystems. Like a stone in a river it is hard to find the wave which causes the other waves. Roberto uses log files, created by the subsystems, to find the reasons. When an error occurs outside a run then it is not shown in the logbook but can be of interest when looking for EOR reasons. 
+The current DAQ-SRC is often called upon to curate End or Run (EOR) reasons, reasons to end the run and thus stop ALICE. He looks for reasons in the electronic logbook. In 99\% of the EORs he succeeds in finding the reason. EOR reasons are given at first by subsystems. Like a stone in a river it is hard to find the wave which causes the other waves. Roberto uses log files, created by the subsystems, to find the reasons. When an error occurs outside a run then it is not shown in the logbook but can be of interest when looking for EOR reasons. 
 
 \subsection{Subsystem team member}
 Each subsystem is being managed by a team of specialists. 
+
+\subsection{Gas technician}
+CERN has this service of delivering all kinds of gasses. Technicians who install the equipment can make entries.
 
 \subsection{On call expert}
 When ALICE is active, always an expert for a subsystem is available. This expert can be called when the people in the operator room are not able to solve a specific problem.
@@ -163,25 +164,7 @@ Concerning the Monte Carlo simulations the same set of information is needed. MC
 
 For a follow-up on the logbook JIRA is used. JIRA is also used for MC-simulations. TWiki is used by the ALICE DPG. In TWiki users make their own lay-out. 
 
-The perspective of the Physics Board is concerned with planning and resource management. How to organise the analysis, i.e. data reconstruction and MC-simulation. There is a top-down approach. Reconstruction is driven by the time of production. Simulation is done on demand, which is possible because the demand is not that big. The Physics Board has several needs or questions:
-\begin{itemize}
-  \item To make the planning possible an overview of storage and processing power (cpu) is needed. 
-  \item The use of resources per user to run jobs could be more detailed.
-  \item How much PB is available on disk for storage.
-  \item For MC-storage a fine grained but lacks an overview.
-  \item When I want to clean up, where do I have to look?
-  \item MC production requests.
-  \item Usage statistics (which data is popular?).
-  \item Sort out why a train takes a specific time to process.
-\end{itemize}
-Most data is replicated because a lot of people use the data.
-
-There are two views from the Physics Board:
-\begin{itemize}
-  \item clean up, to know what could be cleaned up
-  \item planning, when can this MC be run?
-\end{itemize}
-The is a need for reports on resource usage. This is a management view.
+The perspective of the Physics Board is concerned with planning and resource management. How to organise the analysis, i.e. data reconstruction and MC-simulation. There is a top-down approach. Reconstruction is driven by the time of production. Simulation is done on demand, which is possible because the demand is not that big. 
 
 \subsection{CERN administration officer}
 An actor often forgotten is Human Resources who have to be able to access the logbook to read whether somebody has worked as reported.\footnote{Roberto Diva}
@@ -194,9 +177,13 @@ Data Preparation Group (DPG) was created for:
   \item data processing, i.e. monitoring, execution, reporting, bug tracking.
   \item quality assurance, i.e. validation and creating lists of good runs or data sets. Determination whether the data is of good quality or not
 \end{itemize}
+The goal of the DPG-QA is to provide data sets to analysers
 
 \subsection{Developer}
 The developer is a member of the team which develops the system. 
+
+\subsection{Observer}
+Someone who only has read rights and does nothing in terms of adding. This could be a student developing the bookkeeping system.
 
 \subsection{Administrator}
 The administrator is the person who configures the system.

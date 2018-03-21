@@ -99,10 +99,6 @@ Not found in table but shown in application: run number,
   \item Trigger
 \end{itemize}
 
-\subsection{Physics community}
-
-\subsection{ALICE management}
-
 \subsection{Subsystem actors}
 ALICE consists of several subsystems. All these systems are able to create a log entry. The systems are:
   \begin{itemize}
@@ -186,7 +182,7 @@ A subsystem makes an entry into the database consisting of several items. Each e
   \item As a user, I want to be able to login with my CERN credentials to avoid having to remember a new set of credentials. This should be done by using the CERN authentication method.
   \item As a user, I want to be able to customize dashboards so that I only see the fields relevant to me. 
   \item As a user, I want to be able to save search criteria for later use so that I don’t lose time defining them at each visit. 
-  \item As an ALICE member, I would like to receive via email a global summary of each LHC Fill in order to follow ALICE operations without visiting the bookkeeping tools. Currently in the ALICE logbook I like that I receive via email a document with info on efficiency and EOR Reasons and that on the body of the email there is a summary for each fill (Vasco).
+  \item As an ALICE member, I would like to receive via email a global summary of each LHC Fill in order to follow ALICE operations without visiting the bookkeeping tools. Currently in the ALICE logbook I like that I receive via email a document with info on efficiency and EOR Reasons and that on the body of the email there is a summary for each fill (Vasco Chibante Barroso).
   \item As ALICE collaborator I have to create statistics reports such as number of runs, quantity of data, number of events, summaries by trigger classes etc... These reports will use selection criterias I will specify such as time spans, active systems (e.g. only the runs including my particular system), run type etc...
 \item As ALICE collaborator I may have to open multiple GUIs with independent selection criterias (e.g. one browser window for day-to-day work and a second browser window for statistics) (Roberto Divia).
 \item As ALICE collaborator I need APIs to retrieve specific fields in the Logbook using selection criterias I provide. This access must be restricted, probably API by API or by fields being accessed, and protected against intentional or unintentional DoS attacks (Roberto Divia).
@@ -217,8 +213,8 @@ A subsystem makes an entry into the database consisting of several items. Each e
     \item files
     \item actions
   \end{itemize}
-  \item As a shifter, I want to have templates that prefill most of my end-of-shift reports from the available metadata so that I don’t need to fill in myself what the system already knows (Vasco).
-  \item As a Shifter, I would like to have templates that automatically compile and format the data available in the system in order to write my end of shift report in a fast and uniform way. Currently in the ALICE logbook I don't like that I need to compile all the information myself and that not all shifters use the same structure (Vasco).
+  \item As a shifter, I want to have templates that prefill most of my end-of-shift reports from the available metadata so that I don’t need to fill in myself what the system already knows (Vasco Chibante Barroso).
+  \item As a Shifter, I would like to have templates that automatically compile and format the data available in the system in order to write my end of shift report in a fast and uniform way. Currently in the ALICE logbook I don't like that I need to compile all the information myself and that not all shifters use the same structure (Vasco Chibante Barroso).
   \item As a shifter I want to view log entries.
   \item As a shifter I want to be able to create log entries.
   \item As a shifter I want to view announcements.
@@ -231,16 +227,16 @@ A subsystem makes an entry into the database consisting of several items. Each e
   \item As shifter I have to create log entries concerning any system (alone or in combination) (Roberto Divia).
   \item As shifter I may have to cross-reference log entries (e.g. by URL, by unique Reference ID, or by run number)  (Roberto Divia).
   \item  As shifter I may need to attach files to log entries. These files may contain text or binary information (PNGs, JPGs etc...) (Roberto Divia).
-  \item As shifter I may need to cross reference log entries or other logbook fields (e.g. run numbers, fill numbers etc...) with whatever issue tracking system will be used by the ALICE collaboration (today: Jira). This association may also be done automatically by daemons (e.g. what is done today for EOR reasons and Jira tickets) (Roberto Divia).
+  \item As shifter I may need to cross reference log entries or other logbook fields (e.g. run numbers, fill numbers etc...) with whatever issue tracking system will be used by the ALICE collaboration (today: JIRA). This association may also be done automatically by daemons (e.g. what is done today for EOR reasons and Jira tickets) (Roberto Divia).
 
 \end{enumerate}
 
 \subsection{Run Coordinator}
 \begin{enumerate}
-  \item As run co\"ordinator, I want shifters to use templates so that it is easier and faster to read them (Vasco). 
-  \item As run co\"ordinator, I want to attach tags to runs so that I can then use them while searching (Vasco). 
-  \item As run co\"ordinator, I want to edit certain specialized fields associated to a run (e.g. EOR Reason) so that I correct wrong information inserted by the $O^2$ software (Vasco). 
-  \item As run coordinator, I want to specify acquisition targets for certain time periods and check how far we are in achieving them so that I can keep track of progress (Vasco). 
+  \item As run co\"ordinator, I want shifters to use templates so that it is easier and faster to read them (Vasco Chibante Barroso). 
+  \item As run co\"ordinator, I want to attach tags to runs so that I can then use them while searching (Vasco Chibante Barroso). 
+  \item As run co\"ordinator, I want to edit certain specialized fields associated to a run (e.g. EOR Reason) so that I correct wrong information inserted by the $O^2$ software (Vasco Chibante Barroso). 
+  \item As run coordinator, I want to specify acquisition targets for certain time periods and check how far we are in achieving them so that I can keep track of progress (Vasco Chibante Barroso). 
   \item As run co\"ordinator I need to gather statistics on the runs selected by using custom rules (timestamps, run numbers, run types, included detectors etc...). These statistics will include EOR reasons, per-detector and per-system summaries, error recovery (PARs) rates etc... (Roberto Divia)
   \item As run co\"ordinator I have to create Logbook entries that cover almost all the Systems (e.g. global announcements or minutes) (Roberto Divia).
   \item As run co\"ordinator I have to create log entries concerning any system (alone or in combination) (Roberto Divia).
@@ -257,9 +253,9 @@ A subsystem makes an entry into the database consisting of several items. Each e
 \subsection{Subsystem Run Coordinator}
 Each subsystem has its own Subsystem Run Coordinator (SRC). 
 \begin{enumerate}
-  \item As a subsystem responsible, I want to be notified by email (or other channels) of log entries which are related with my subsystem so that I can better follow-up activities without having to constantly visit the product, e.g. EOS report (Robert Munzer) (Vasco). 
-  \item As a subsystem expert, I want to attach quality flags to runs so that physicists can use them while searching for good data sets for their analysis (Vasco). 
-  \item As a subsystem expert, I want to store custom fields that are only relevant to my subsystem so that I can correlate them with the rest of the metadata repository (e.g. ‘fetch all runs with configuration X where this happened to my detector’) (Vasco). 
+  \item As a subsystem responsible, I want to be notified by email (or other channels) of log entries which are related with my subsystem so that I can better follow-up activities without having to constantly visit the product, e.g. EOS report (Robert Munzer) (Vasco Chibante Barroso). 
+  \item As a subsystem expert, I want to attach quality flags to runs so that physicists can use them while searching for good data sets for their analysis (Vasco Chibante Barroso). 
+  \item As a subsystem expert, I want to store custom fields that are only relevant to my subsystem so that I can correlate them with the rest of the metadata repository (e.g. ‘fetch all runs with configuration X where this happened to my detector’) (Vasco Chibante Barroso). 
   \item As a detector expert I would like be able to extract run/fill information in a format, which allows easier
 analysis than txt files, e.g. root-files to be able to do specific statistical analysis (Robert Munzer).
   \item As a SRC I would like to be able to create my own detector specific templates for example On-Call interventions. In this case I can specify the relevant information which are required from the OnCall shifter for different kind of “standard” events (Robert Munzer).
@@ -301,6 +297,34 @@ analysis than txt files, e.g. root-files to be able to do specific statistical a
   \item As system team member I may need to cross reference log entries or other logbook fields (e.g. run numbers, fill numbers etc...) with whatever issue tracking system will be used by the ALICE collaboration (today: Jira). This association may also be done automatically by daemons (e.g. what is done today for EOR reasons and Jira tickets) (Roberto Divia).
 \end{enumerate}
 
+
+\subsection{Physics community}
+The Physics Board has several needs or questions:
+\begin{enumerate}
+  \item To make the planning possible an overview of storage and processing power (CPU) is needed. 
+  \item The use of resources per user to run jobs could be more detailed.
+  \item How much PB is available on disk for storage.
+  \item For MC-storage a fine grained but lacks an overview.
+  \item When I want to clean up, where do I have to look?
+  \item MC production requests.
+  \item Usage statistics (which data is popular?).
+  \item Sort out why a train takes a specific time to process.
+\end{enumerate}
+Most data is replicated because a lot of people use the data.
+
+There are two views from the Physics Board:
+\begin{itemize}
+  \item clean up, to know what could be cleaned up
+  \item planning, when can this MC be run?
+\end{itemize}
+The is a need for reports on resource usage. This is a management view.
+
+\subsection{ALICE management}
+\begin{enumerate}
+  \item 
+\end{enumerate}
+
+
 \subsection{CERN administration officer}
 \begin{itemize}
   \item As CERN administration officer I need to check all the on-call intervention records issued by CERN personnel (use case to be cross-checked with EP-AID-DA management) (Roberto Divia).
@@ -308,8 +332,8 @@ analysis than txt files, e.g. root-files to be able to do specific statistical a
 
 \subsection{Developer}
 \begin{enumerate}
-  \item As a developer, I want to programmatically fetch log entries that match a given criteria so that I can build custom logic or applications based on existing data (Vasco). 
-  \item As a developer, I want to programmatically fetch runs that match a given criteria so that I can build custom logic or applications based on existing data (Vasco). 
+  \item As a developer, I want to programmatically fetch log entries that match a given criteria so that I can build custom logic or applications based on existing data (Vasco Chibante Barroso). 
+  \item As a developer, I want to programmatically fetch runs that match a given criteria so that I can build custom logic or applications based on existing data (Vasco Chibante Barroso). 
 \end{enumerate}
 
 \subsection{Administrator}
@@ -322,7 +346,7 @@ analysis than txt files, e.g. root-files to be able to do specific statistical a
     \item title of the entry
     \item log entry
   \end{itemize}
-  \item As an administrator, I want to have a dashboard that gives me log-entry related analytics so that I follow the evolution of the repository (Vasco). 
+  \item As an administrator, I want to have a dashboard that gives me log-entry related analytics so that I follow the evolution of the repository (Vasco Chibante Barroso). 
   \item As Administrator I need to be able to update the logbook information for what concerns the bookkeeping system and other systems, in particular the run quality flag and the EOR reason(s). The question arises if subsystem run co\"ordinators can update information associated to other systems (e.g. EOR reasons) as it is the case today (Roberto Divia).
   \item As administrator I must be able to move collaborators to and out of subsystem teams. These action may be conflict the information stored in SAMS (Roberto Divia).
     \item As administrator access to Logbook actions restricted to my role should be granted without external interventions and for the time span of my duties (e.g. for shifters the shifts before and after mine, plus my own shift) (Roberto Divia).
@@ -332,10 +356,83 @@ analysis than txt files, e.g. root-files to be able to do specific statistical a
   \item As an administrator I must be able to configure the system.
 \end{enumerate}
 
+\subsection{Data Preparation Group}
+\begin{enumerate}
+  \item Make different views:
+  \begin{itemize}
+    \item shifter
+    \item analyser
+    \item detector expert
+  \end{itemize}
+\end{enumerate}
 
+As DPG for raw data and MC processing we need to
+\begin{enumerate}
+  \item Access information about runs to be processed
+  \begin{itemize}
+    \item Detectors present in acquisition, special conditions/triggers, issues
+spotted online
+    \end{itemize}
+  \item Track the steps for the preparation of the production
+  \item Keep track of the status of a given production
+  \begin{itemize}
+    \item Data: Setup - CPass0 - CPass1 - Manual Calibration - PPass - FInal QA
+    \item MC: Setup - Running first 10\% - 10\% QA - Running - Final QA (NOTE: Setup phase = preparation, which may require software
+developments, new features required, bug fixes)
+  \end{itemize}
+  \item Bookkeep of information about raw data reconstruction passes
+  \begin{itemize}
+    \item Software version used, calibrations used, known bugs/missing features
+  \end{itemize}
+  \item Bookkeep of MC productions anchored to a given run/period
+  \begin{itemize}
+    \item Characteristics of the MC production (event generator, statistics...)
+    \item Which reconstruction pass the MC was anchored to
+  \end{itemize}
+  \item Link each production to its QA results (comments / plots) per run and per period
+  \begin{itemize}
+    \item Ideally with the possibility to comparing MC QA plots to corresponding
+raw data
+  \end{itemize}
+  \item Provide lists of good runs to be used for analysis
+  \begin{itemize}
+    \item Lists are analysis dependent because of different requirements on
+detectors/triggers ....
+  \end{itemize}
+\end{enumerate}
 
+DPG-QA would like to have:
+\begin{enumerate}
+  \item an automatic tool to ask each subsystem run coordinator for validation,
+  \item something so they don't have to collect manually good runs to create a run list,
+  \item one page for derived data,
+  \item access different information from a single webpage,
+  \item in the RCT access to plots and other info,
+  \item a representation of wall time,
+  \item the links of the MC which are anchored to a specific run,
+  \item easy access to data with an API to compare trending plots and correlation plots,
+  \item notification of alarms,
+  \item aggregation of data for users,
+  \item have ONE single entry point for all information which proper link a specific run to ALL information needed:
+  \begin{itemize}
+    \item logbook extracted information
+    \item all detectors QAplots
+    \item the production/QA jira ticket
+    \item look/browse the QAresults.root file
+  \end{itemize}
+  \item cross checks of QA results/anomalies in different detectors, e.g. check ITS QA variables (e.g. occupancy or matching efficiency) against (or close to...) interaction rate from EVS QA
+  \item easy comparison of data vs. MC
+\end{enumerate}
 
+\subsection{Gas technician}
+\begin{enumerate}
+  \item As a gas technician I want to create log entries when I delivered gas and other substances at Point 2.
+\end{enumerate}
 
+\subsection{Observer}
+\begin{enumerate}
+  \item As an observer I want to be able to look at the bookkeeping without the chance of adding or manipulating data.
+\end{enumerate}
 
 \section{Software System Attributes}
 The software system attributes, system quality attributes or non functional requirements are not yet fully determined. 
@@ -343,7 +440,7 @@ The software system attributes, system quality attributes or non functional requ
 \subsection{Development stack}
 The $O^2$ userinteraction framework consists of various aspects:
 \begin{itemize}
-  \item http and restfull api
+  \item HTTP and RESTFULL API
   \item CERN oAuth 2.0 with e-group authorization
   \item WebSockets with JSON Web Token authentication
   \item Logging (including InfoLogger)
@@ -352,16 +449,16 @@ The $O^2$ userinteraction framework consists of various aspects:
 
 At the client side is consists of:
 \begin{itemize}
-  \item webSocket client
+  \item WebSocket client
   \item plotting ROOT objects
   \item unified look and feel
 \end{itemize}
-Several pieces of code concerning these subject can be found at https://\-github.com/\-AliceO2Group/Gui.
+Several pieces of code concerning these subject can be found at https://\-github.com/\-AliceO2Group/WebUi.
 
 \subsubsection{Languages}
 Languages used on server side:
 \begin{itemize}
-  \item Node.js (ES6)
+  \item Node.js 8.9.4 (ES6) 
   \item Event-driven server-side JavaScript
   \item Built on top of Chrome V8 engine
   \item Non-blocking, single threaded design
@@ -372,6 +469,7 @@ On the client side:
   \item JavaScript (ES6), CSS
   \item DOM Diff (Virtual DOM)
   \item CSS bootstrap
+  \item ZeroMQ
   \item (jQuery)
 \end{itemize}
 
@@ -442,7 +540,7 @@ For code coverage Codecov is used. It tracks statements and branches and does fu
 \begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.5]{./images/codecov.png}
-    \caption{Enhancing development workflows and improving code quality.}
+    \caption{Codecov enhances development workflows and improves code quality.}
     \label{fig:}
   \end{center}
 \end{figure}
@@ -454,7 +552,7 @@ The Node Security Platform audits npm packages and provides static analysis rule
 \begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.2]{./images/security.png}
-    \caption{Continuous Security monitoring for node apps}
+    \caption{Node Security Platform a continuous security monitoring for node apps}
     \label{fig:}
   \end{center}
 \end{figure}
@@ -489,7 +587,7 @@ An abstraction of DOM (Document Object Model) tree should be use. When used we o
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[scale=1]{./images/mithril.png}
+    \includegraphics[scale=2]{./images/mithril.png}
     \caption{Mithril is a modern client-side Javascript framework for building Single Page Applications.}
     \label{fig:}
   \end{center}
